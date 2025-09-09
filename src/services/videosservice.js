@@ -1,5 +1,3 @@
-import { video } from "../../../BillionTube-Backend/src/models/video.model";
-import axios from "../api/axios";
 import api from "../api/axios";
 
 export const videosAPI = {
