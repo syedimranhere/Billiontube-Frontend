@@ -3,7 +3,6 @@ import { TrendingUp, Play, Eye, Clock, Calendar } from "lucide-react";
 import VideoCard from "../components/cards&buttons/videoCard"
 import { videosAPI } from "../services/videosservice";
 import { Blueloader } from "../components/loaders/blueloader";
-import { video } from "../../../BillionTube-Backend/src/models/video.model";
 export default function TrendingPage() {
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true);
