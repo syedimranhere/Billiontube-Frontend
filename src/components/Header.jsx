@@ -10,7 +10,7 @@ import {
     ChevronDown,
     Plus
 } from 'lucide-react';
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { UseUserContext } from "../context/AuthContext";
 
@@ -18,17 +18,51 @@ import HeaderLoader from "./loaders/headerloader";
 import { usersAPI } from '../services/usersservice';
 import { SignoutLoader } from './loaders/signoutloader';
 
-const Header = () => {
+// Separate component for search input - isolated state
+const SearchInput = ({ className, autoFocus = false }) => {
+    const [localQuery, setLocalQuery] = useState('');
+    const navigate = useNavigate();
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (localQuery.trim()) {
+            navigate(`/search/${localQuery.trim()}`);
+        }
+    };
+
+    const handleChange = (e) => {
+        setLocalQuery(e.target.value);
+    };
+
+    return (
+        <div className="relative w-full">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-4 w-4 text-neutral-100 z-10" />
+            </div>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Search content..."
+                    value={localQuery}
+                    onChange={handleChange}
+                    className={className}
+                    autoFocus={autoFocus}
+                />
+            </form>
+        </div>
+    );
+};
+
+const Header = () => {
     const [signoutLoading, setSignoutLoading] = useState(false);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const [showMobileSearch, setShowMobileSearch] = useState(false);
-    const [query, setQuery] = useState(null)
-    const { Authenticated, setAuthenticated, setUser, loading, user } =
-        UseUserContext();
+
+    const { Authenticated, setAuthenticated, setUser, loading, user } = UseUserContext();
     const profileMenuRef = useRef(null);
     const navigate = useNavigate();
 
+    // Handle clicks outside profile menu
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
@@ -38,13 +72,9 @@ const Header = () => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        navigate(`/search/${query}`)
 
-    }
-
-    const handleProfileMenuClick = async (action) => {
+    // Memoized profile menu handler
+    const handleProfileMenuClick = useCallback(async (action) => {
         setShowProfileMenu(false);
         switch (action) {
             case "dashboard":
@@ -70,11 +100,37 @@ const Header = () => {
                 }
                 break;
         }
-    };
+    }, [navigate, setUser, setAuthenticated]);
+
+    // Memoized navigation handlers
+    const handleToggleMobileSearch = useCallback(() => {
+        setShowMobileSearch(!showMobileSearch);
+    }, [showMobileSearch]);
+
+    const handleToggleProfileMenu = useCallback(() => {
+        setShowProfileMenu(!showProfileMenu);
+    }, [showProfileMenu]);
+
+    const handleNavigatePremium = useCallback(() => {
+        navigate("/premium");
+    }, [navigate]);
+
+    const handleNavigateUpload = useCallback(() => {
+        navigate("/upload");
+    }, [navigate]);
+
+    const handleNavigateLogin = useCallback(() => {
+        navigate("/login");
+    }, [navigate]);
+
+    const handleNavigateSignup = useCallback(() => {
+        navigate("/signup");
+    }, [navigate]);
 
     if (loading || (Authenticated && !user)) {
         return <HeaderLoader />;
     }
+
     return (
         <>
             <header
@@ -91,7 +147,6 @@ const Header = () => {
             after:pointer-events-none"
             >
                 <div className="flex items-center justify-between w-full">
-
                     <div className="flex items-center">
                         <div className="w-10 h-10 flex-shrink-0"></div>
                         {/* Hide logo on mobile when search is active, show on larger screens */}
@@ -108,46 +163,26 @@ const Header = () => {
 
                     {/* Desktop search bar - hidden on mobile */}
                     <div className="hidden lg:flex flex-1 max-w-md xl:max-w-xl mx-4 xl:mx-6">
-                        <div className="relative w-full">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Search className="h-4 w-4 text-neutral-100 z-10" />
-                            </div>
-                            <form action="" onSubmit={handleSubmit} >
-                                <input
-                                    type="text"
-                                    placeholder="Search content..."
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    className="block w-full pl-10 pr-4 py-2 
+                        <SearchInput
+                            className="block w-full pl-10 pr-4 py-2 
                             bg-neutral-800/70 backdrop-blur-sm border border-neutral-700/60 
                             rounded-full text-white placeholder-neutral-500 text-sm
                             focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-500/60
                             transition-all duration-200 shadow-sm"
-                                />
-                            </form>
-                        </div>
+                        />
                     </div>
 
                     {/* Mobile expanded search bar */}
                     {showMobileSearch && (
                         <div className="lg:hidden flex-1 mx-2">
-                            <div className="relative w-full">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Search className="h-4 w-4 text-neutral-100 z-10" />
-                                </div>
-                                <form action="" onSubmit={handleSubmit} >
-                                    <input
-                                        type="text"
-                                        placeholder="Search content..."
-                                        onChange={(e) => setQuery(e.target.value)}
-                                        className="block w-full pl-10 pr-4 py-2 
+                            <SearchInput
+                                className="block w-full pl-10 pr-4 py-2 
                                 bg-neutral-800/70 backdrop-blur-sm border border-neutral-700/60 
                                 rounded-full text-white placeholder-neutral-500 text-sm
                                 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-500/60
                                 transition-all duration-200 shadow-sm"
-                                        autoFocus
-                                    />
-                                </form>
-                            </div>
+                                autoFocus={true}
+                            />
                         </div>
                     )}
 
@@ -156,7 +191,7 @@ const Header = () => {
                         {/* Mobile Search Toggle Button */}
                         <button
                             className="lg:hidden p-2 rounded-full bg-neutral-800/70 backdrop-blur-sm border border-neutral-700/60 text-neutral-400 hover:text-white hover:bg-neutral-700/70 transition-colors"
-                            onClick={() => setShowMobileSearch(!showMobileSearch)}
+                            onClick={handleToggleMobileSearch}
                         >
                             {showMobileSearch ? (
                                 <X className="h-4 w-4" />
@@ -169,7 +204,7 @@ const Header = () => {
                             <>
                                 {/* Pro Button - Responsive */}
                                 <button
-                                    onClick={() => navigate("/premium")}
+                                    onClick={handleNavigatePremium}
                                     className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 
                                 rounded-full border border-zinc-700/60 bg-zinc-900/80 backdrop-blur-sm
                                 text-xs sm:text-sm font-medium text-zinc-200 tracking-wide
@@ -183,7 +218,7 @@ const Header = () => {
 
                                 {/* Upload Button - Hide text on mobile when search is active */}
                                 <button
-                                    onClick={() => navigate("/upload")}
+                                    onClick={handleNavigateUpload}
                                     className={`inline-flex items-center px-2 py-2 sm:px-3 sm:py-2 lg:px-4
                                 bg-neutral-800/70 backdrop-blur-sm hover:bg-neutral-700/70 border border-neutral-700/60 
                                 text-white text-xs sm:text-sm font-medium rounded-full transition-colors ${showMobileSearch ? 'lg:hidden' : ''
@@ -198,7 +233,7 @@ const Header = () => {
                                 {/* Profile Dropdown */}
                                 <div className="relative" ref={profileMenuRef}>
                                     <button
-                                        onClick={() => setShowProfileMenu(!showProfileMenu)}
+                                        onClick={handleToggleProfileMenu}
                                         className="flex items-center p-1 rounded-full 
                                     bg-neutral-800/70 backdrop-blur-sm border border-neutral-700/60 
                                     hover:bg-neutral-700/70 transition-colors group"
@@ -277,14 +312,14 @@ const Header = () => {
                         ) : (
                             <>
                                 <button
-                                    onClick={() => navigate("/login")}
+                                    onClick={handleNavigateLogin}
                                     className={`px-2 py-1.5 sm:px-3 sm:py-2 lg:px-4 text-xs sm:text-sm font-medium text-neutral-300 hover:text-white rounded-full hover:bg-neutral-800/70 backdrop-blur-sm transition-colors ${showMobileSearch ? 'hidden sm:block' : ''
                                         }`}
                                 >
                                     Sign in
                                 </button>
                                 <button
-                                    onClick={() => navigate("/signup")}
+                                    onClick={handleNavigateSignup}
                                     className={`px-2 py-1.5 sm:px-3 sm:py-2 lg:px-4 bg-blue-600/90 backdrop-blur-sm hover:bg-blue-700/90 text-white text-xs sm:text-sm font-medium rounded-full transition-colors ${showMobileSearch ? 'hidden sm:block' : ''
                                         }`}
                                 >
@@ -303,5 +338,4 @@ const Header = () => {
         </>
     );
 };
-
 export default Header;

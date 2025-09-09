@@ -96,7 +96,7 @@ export const useVideoInfo = (videoId, ownerId) => {
       // Optimistic update - update UI immediately
       if (!liked) {
         setLiked(true);
-        setLikes((prev) => prev + i1);
+        setLikes((prev) => prev + 1);
         setDisliked(false); // Remove dislike if exists
         showNotification("Video liked", true);
       } else {

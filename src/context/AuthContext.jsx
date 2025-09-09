@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import { createContext, useState, useContext } from 'react';
 import { usersAPI } from '../services/usersservice';
 const UserContext = createContext();
@@ -16,7 +15,7 @@ export const UserProvider = ({ children }) => {
             } catch (error) {
                 setAuthenticated(false);
                 setUser(null);
-                console.log("error")
+
             }
             finally {
                 setLoading(false);

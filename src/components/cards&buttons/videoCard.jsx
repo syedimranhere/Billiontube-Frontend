@@ -15,6 +15,7 @@ const VideoCard = memo(({
     timestamps,
     views = 0,
     owner,
+
 }) => {
     const [showMenu, setShowMenu] = useState(false);
     const { showNotification } = useNotification();
@@ -24,7 +25,7 @@ const VideoCard = memo(({
             await WatchlaterAPI.addVideoToWatchLater(videoId);
             showNotification("Video Added to watch later");
         } catch (error) {
-            console.log(error.message);
+            console.error(error.message);
         }
     }, [showNotification]);
 
@@ -55,7 +56,7 @@ const VideoCard = memo(({
                     <img
                         src={thumbnail}
                         alt={title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-center"
                         loading="lazy"
                     />
                     {/* Duration Badge */}
@@ -63,6 +64,7 @@ const VideoCard = memo(({
                         {duration}
                     </div>
                 </a>
+
 
                 {/* 3-dot menu - shows on hover using CSS group */}
                 <div className="absolute top-1 right-1 sm:top-2 sm:right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">

@@ -1,3 +1,4 @@
+import axios from "../api/axios";
 import api from "../api/axios";
 
 export const usersAPI = {
@@ -9,8 +10,7 @@ export const usersAPI = {
     return response.data;
   },
   login: async (credentials) => {
-    c;
-    const response = await api.post("/user/login", credentials, {
+    const response = await axios.post("/user/login", credentials, {
       withCredentials: true,
     });
     return response.data;
@@ -29,11 +29,12 @@ export const usersAPI = {
     return response.data;
   },
   uploadPFP: async (formDataToSend) => {
-    await api.post("/user/change-avatar", formDataToSend, {
+    const response = await api.post("/user/change-avatar", formDataToSend, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
+    return response.data;
   },
   changeUsername: async (data) => {
     await api.post("/user/update-username", {
@@ -49,7 +50,7 @@ export const usersAPI = {
     await api.post("/user/change-password", data);
   },
   getUser: async (id) => {
-    const response = await api.get(`/user/${id}`);
+    const response = await api.get(`/user/id/${id}`);
     return response.data;
   },
   getUSerStats: async () => {

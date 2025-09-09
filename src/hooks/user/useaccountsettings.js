@@ -1,12 +1,11 @@
 import { UseUserContext } from "../../context/AuthContext";
-
 import { useNotification } from "../../context/notificationcontext";
 import { useState, useRef, useEffect } from "react";
 import { usersAPI } from "../../services/usersservice";
 
 export const useAccountSettings = () => {
   const { showNotification } = useNotification();
-  const { user } = UseUserContext();
+  const { user, updateUser } = UseUserContext(); // Assuming you have updateUser function
 
   const [pfploading, setpfploading] = useState(false);
   const [settingit, setsettingit] = useState(false);
@@ -54,28 +53,64 @@ export const useAccountSettings = () => {
   const handleFileChange = async (e) => {
     setpfploading(true);
     const file = e.target.files[0];
+
     if (file) {
-      const fileURL = URL.createObjectURL(file);
-      setUserInfo((prev) => ({
-        ...prev,
-        profilePicture: fileURL,
-      }));
+      // Store original profile picture URL in case of error
+      const originalProfilePicture = userInfo.profilePicture;
 
       const formDataToSend = new FormData();
       formDataToSend.append("avatar", file);
 
       try {
-        usersAPI.uploadPFP(formDataToSend);
-        showNotification("Profile picture updated successfully", true);
+        // Wait for the API call to complete
+        const response = await usersAPI.uploadPFP(formDataToSend);
+
+        // Only update the UI after successful upload
+        const newProfilePictureUrl = response.avatar;
+
+        if (newProfilePictureUrl) {
+          setUserInfo((prev) => ({
+            ...prev,
+            profilePicture: newProfilePictureUrl,
+          }));
+
+          // Update the global user context if available
+          if (updateUser) {
+            updateUser({ ...user, avatar: newProfilePictureUrl });
+          }
+
+          showNotification("Profile picture updated successfully", true);
+        } else {
+          // If no new URL in response, create local URL for immediate feedback
+          const fileURL = URL.createObjectURL(file);
+          setUserInfo((prev) => ({
+            ...prev,
+            profilePicture: fileURL,
+          }));
+          showNotification("Profile picture updated successfully", true);
+        }
       } catch (error) {
         console.error("Error updating profile picture:", error);
+
+        // Revert to original profile picture on error
         setUserInfo((prev) => ({
           ...prev,
-          profilePicture: user.avatar,
+          profilePicture: originalProfilePicture,
         }));
+
+        showNotification(
+          error.response?.data?.message || "Failed to update profile picture",
+          false
+        );
       }
     }
+
     setpfploading(false);
+
+    // Reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   const handleUsernameSubmit = async () => {
@@ -87,11 +122,20 @@ export const useAccountSettings = () => {
         ...prev,
         username: formData.username,
       }));
+
+      // Update global user context
+      if (updateUser) {
+        updateUser({ ...user, username: formData.username });
+      }
+
       setEditMode((prev) => ({ ...prev, username: false }));
       showNotification("Username changed", true);
     } catch (error) {
       console.error("Error updating username:", error);
-      showNotification("Username Already Exists", false);
+      showNotification(
+        error.response?.data?.message || "Username Already Exists",
+        false
+      );
     }
     setsettingit(false);
   };
@@ -100,14 +144,24 @@ export const useAccountSettings = () => {
     setsettingit(true);
     try {
       await usersAPI.changeFullname(formData.fullname);
+
       setUserInfo((prev) => ({
         ...prev,
         fullname: formData.fullname,
       }));
+
+      // Update global user context
+      if (updateUser) {
+        updateUser({ ...user, fullname: formData.fullname });
+      }
+
       setEditMode((prev) => ({ ...prev, fullname: false }));
-      showNotification("Fullname changed");
+      showNotification("Fullname changed", true);
     } catch (error) {
-      showNotification("Invalid Fullname", false);
+      showNotification(
+        error.response?.data?.message || "Invalid Fullname",
+        false
+      );
     }
     setsettingit(false);
   };
@@ -119,6 +173,9 @@ export const useAccountSettings = () => {
       seterror("Passwords do not match");
       return;
     }
+
+    setsettingit(true);
+
     try {
       await usersAPI.changePassword({
         oldpass: formData.currentPassword,
@@ -138,6 +195,8 @@ export const useAccountSettings = () => {
       console.error(error.response);
       seterror(error.response?.data?.message || "Error changing password");
     }
+
+    setsettingit(false);
   };
 
   const handleCancel = (field) => {
@@ -150,6 +209,7 @@ export const useAccountSettings = () => {
       newPassword: "",
       confirmPassword: "",
     }));
+    seterror(""); // Clear any errors when canceling
   };
 
   return {

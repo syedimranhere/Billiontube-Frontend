@@ -1,14 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
-import {
-
-  AlertTriangle,
-} from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import SmoothSkeletonLoader from "../components/loaders/videoskeleton";
 import { useNotification } from "../context/notificationcontext";
 import { VideoCard2 } from "../components/cards&buttons/userVideoscard";
 import { EditModal } from "../components/editModal";
 import { videosAPI } from "../services/videosservice";
 import { usersAPI } from "../services/usersservice";
+
 const VideoManagement = () => {
   const { showNotification } = useNotification();
 
@@ -30,7 +28,6 @@ const VideoManagement = () => {
       try {
         setLoading(true);
         const response = await usersAPI.getMyvideos();
-
         setVideos(response.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
@@ -105,7 +102,7 @@ const VideoManagement = () => {
         formData.append("thumbnail", editForm.thumbnailFile);
       }
 
-      await usersAPI.editVideoDetails(editingVideo, formData)
+      await usersAPI.editVideoDetails(editingVideo, formData);
       showNotification("Video updated successfully!", "success");
 
       setVideos((prev) =>
@@ -145,13 +142,11 @@ const VideoManagement = () => {
     setDeleteConfirm(null);
 
     try {
-      await videosAPI.deleteAVideo(videoId)
+      await videosAPI.deleteAVideo(videoId);
       await usersAPI.deleteforALL(videoId);
-
       showNotification("Video deleted successfully!", "success");
     } catch (error) {
       showNotification("Failed to delete video", "error");
-
       setVideos(oldVideos);
     }
   };
@@ -206,17 +201,21 @@ const VideoManagement = () => {
         />
       )}
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1">
-            My Videos
-          </h1>
-          <p className="text-gray-400 text-sm">Manage your video content</p>
+      {/* Header Section */}
+      <div className="pt-20 pb-8">
+        <div className="px-6">
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+              My Videos
+            </h1>
+            <p className="text-gray-400 text-lg">Manage your video content</p>
+          </div>
         </div>
+      </div>
 
-        {/* Videos Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      {/* Videos Grid Container */}
+      <div className="p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-6">
           {videos.map((video) => (
             <VideoCard2
               key={video._id}
@@ -226,21 +225,47 @@ const VideoManagement = () => {
             />
           ))}
         </div>
+
+        {/* Empty State */}
+        {videos.length === 0 && !loading && (
+          <div className="text-center py-16">
+            <div className="text-gray-500 mb-4">
+              <svg
+                className="w-16 h-16 mx-auto mb-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">No videos yet</h3>
+            <p className="text-gray-400">Start creating content to see your videos here</p>
+          </div>
+        )}
       </div>
-      <style>{`
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .line-clamp-3 {
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
+
+      <style>
+        {`
+          .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        `}
+      </style>
     </div>
   );
 };

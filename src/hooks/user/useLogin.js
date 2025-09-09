@@ -27,15 +27,15 @@ export const useLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("LOGIN 1");
 
     try {
       setLoggingIn(true);
+
       const response = await usersAPI.login({
         username_or_email: formData.email,
         typedpassword: formData.password,
       });
-      console.log("LOGIN 2");
+
       setAuthenticated(true);
       setUser(response.user);
       setLoggingIn(false);

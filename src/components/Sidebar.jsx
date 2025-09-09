@@ -31,10 +31,9 @@ const Sidebar = () => {
     ];
     const { Authenticated } = UseUserContext();
     const navigate = useNavigate();
-
     return (
         <>
-            {/* Mobile/Desktop Overlay */}
+
             {sidebarExpanded && (
                 <div
                     className="fixed inset-0 bg-black/50 z-40"
@@ -129,6 +128,24 @@ const Sidebar = () => {
                                     >
                                         <Home className="h-5 w-5 flex-shrink-0 group-hover:text-white" />
                                         <span className="ml-3 whitespace-nowrap">Home</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={() => {
+                                            setActiveNavItem("trending");
+                                            navigate("/trending");
+                                            setSidebarExpanded(false);
+                                        }}
+                                        className={`group w-full flex items-center px-3 py-3 rounded-lg text-sm font-medium 
+            transition-all duration-200 
+            ${activeNavItem === "trending"
+                                                ? "bg-black-100 text-white border border-neutral-700"
+                                                : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+                                            }`}
+                                    >
+                                        <TrendingUp className="h-5 w-5 flex-shrink-0 group-hover:text-white" />
+                                        <span className="ml-3 whitespace-nowrap">Trending</span>
                                     </button>
                                 </li>
 

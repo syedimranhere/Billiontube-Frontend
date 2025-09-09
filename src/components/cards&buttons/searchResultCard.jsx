@@ -22,7 +22,7 @@ export const VideoCard4 = memo(({ videoId,
             await WatchlaterAPI.addVideoToWatchLater(videoId);
             showNotification("Video Added to watch later");
         } catch (error) {
-            console.log(error.message);
+            console.error(error.message);
         }
     }, [showNotification]);
 

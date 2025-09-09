@@ -84,7 +84,6 @@ export default function LoginPage() {
                                     />
                                 </div>
 
-                                {/* Password */}
                                 <div className="space-y-2">
                                     <label
                                         htmlFor="password"

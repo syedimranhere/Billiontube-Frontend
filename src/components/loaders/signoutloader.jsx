@@ -1,3 +1,4 @@
+import { Loader2 } from "lucide-react"
 export const SignoutLoader = () => {
     return (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center z-[9999]">
