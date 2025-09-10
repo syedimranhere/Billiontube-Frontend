@@ -39,7 +39,7 @@ function App() {
           <Route path="/account-settings" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
           <Route path="/my-content" element={<ProtectedRoute><VideoManagement /></ProtectedRoute>} />
           <Route path="/watchlater" element={<ProtectedRoute><WatchLaterPage /></ProtectedRoute>} />
-          <Route path="/  " element={<ProtectedRoute><LikedVideos /></ProtectedRoute>} />
+          <Route path="/likedvideos" element={<ProtectedRoute><LikedVideos /></ProtectedRoute>} />
           <Route path="/subscriptions" element={<ProtectedRoute><Mysubscriptions /></ProtectedRoute>} />
           <Route path="/history" element={<ProtectedRoute><WatchHistory /></ProtectedRoute>} />
         </Route>
