@@ -135,7 +135,7 @@ const Header = () => {
         <>
             <header
                 className="h-14 sm:h-16 
-            bg-gradient-to-b from-neutral-900/95 via-neutral-900/80 to-neutral-900/60
+            bg-gradient-to-b from-black via-black-900/80 to-neutral-700/60
             backdrop-blur-xl backdrop-saturate-150
             border-b border-neutral-700/50 
             flex items-center px-3 sm:px-4 
