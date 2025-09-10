@@ -32,8 +32,13 @@ const BillionTubeAbout = () => {
                             <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-full sm:max-w-lg mx-auto lg:mx-0">
                                 BillionTube is my learning-phase video app where I’m stress-testing UX, authentication, and performance. Iterating fast, fixing bugs, and pushing toward scale.
                             </p>
+
                             <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-full sm:max-w-lg mx-auto lg:mx-0">
                                 I am currently in the learning phase of my journey as a fullstack developer, building projects that act as battlegrounds to sharpen my skills. Each project, including BillionTube, is designed to test me against real-world challenges so I can demonstrate not just theory, but practical, job-ready abilities.
+                            </p>
+
+                            <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed italic max-w-full sm:max-w-lg mx-auto lg:mx-0">
+                                Of course, there are areas where this could go further — more advanced authentication flows, security hardening, and extra features I already know about but haven’t shipped yet. What you see here is me pushing to the edge of what I can deliver right now, and then leveling up with each iteration.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-4 sm:mt-6">

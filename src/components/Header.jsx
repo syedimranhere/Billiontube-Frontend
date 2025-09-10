@@ -149,17 +149,30 @@ const Header = () => {
                 <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                         <div className="w-10 h-10 flex-shrink-0"></div>
-                        {/* Hide logo on mobile when search is active, show on larger screens */}
+
+                        {/* Text + Logo inline */}
                         <a
                             href="/"
-                            className={`flex items-center text-white hover:text-gray-200 transition-colors ml-2 sm:ml-4 ${showMobileSearch ? 'hidden' : 'block'
-                                } lg:block`}
+                            className={`flex items-center text-white hover:text-gray-200 transition-colors ml-1 sm:ml-1 ${showMobileSearch ? 'hidden' : 'flex'} lg:flex`}
                         >
-                            <span className="font-bold text-base sm:text-lg lg:text-xl xl:text-2xl tracking-tight truncate">
+                            {/* Text (hidden on mobile, visible sm+) */}
+                            <span className="hidden sm:inline font-bold text-base sm:text-lg lg:text-xl xl:text-2xl tracking-tight truncate">
                                 BillionTube
                             </span>
+
+                            {/* Logo (always visible) */}
+                            <img
+                                src="/file.svg"
+                                alt="BillionTube logo"
+                                className="w-8 h-8 sm:w-10 sm:h-10 ml-0 sm:ml-2"
+                            />
                         </a>
                     </div>
+
+
+
+
+
 
                     {/* Desktop search bar - hidden on mobile */}
                     <div className="hidden lg:flex flex-1 max-w-md xl:max-w-xl mx-4 xl:mx-6">

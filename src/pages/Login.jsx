@@ -27,14 +27,27 @@ export default function LoginPage() {
 
 
 
-            {/* Header */}
             <header className="absolute top-0 left-0 right-0 z-30 p-4 sm:p-6">
-                <Link to="/" aria-label="Go to BillionTube homepage">
-                    <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight hover:text-gray-200 transition-colors">
+                <Link
+                    to="/"
+                    aria-label="Go to BillionTube homepage"
+                    className="flex items-center gap-2 sm:gap-3"
+                >
+                    {/* Logo Icon */}
+                    <img
+                        src="/file.svg"
+                        alt="BillionTube logo"
+                        className="w-8 h-8 sm:w-10 sm:h-10"
+                    />
+
+                    {/* Brand Name */}
+                    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight hover:text-gray-200 transition-colors">
                         BillionTube
                     </h1>
                 </Link>
             </header>
+
+
 
             {/* Main Content */}
             <main className="relative z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 pt-16 sm:pt-20">

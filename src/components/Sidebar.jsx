@@ -64,7 +64,9 @@ const Sidebar = () => {
                                 href="/"
                                 className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
                             >
-                                <span className="font-semibold text-xl sm:text-2xl">BillionTube</span>
+                                <span className="hidden sm:inline font-bold text-base sm:text-lg lg:text-xl xl:text-2xl tracking-tight truncate">
+                                    BillionTube
+                                </span>
                             </a>
                         </div>
 
