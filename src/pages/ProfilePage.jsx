@@ -101,7 +101,7 @@ const ProfilePage = () => {
                                     <div className="flex items-center justify-center mb-2">
                                         <Eye className="w-4 h-4 text-yellow-500 mr-2" />
                                         <span className="text-sm text-neutral-400">Total Views</span>
-                                    </div>t
+                                    </div>
                                     <div className="text-2xl font-bold text-white">
                                         {userData.totalViews}
                                     </div>
