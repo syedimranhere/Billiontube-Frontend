@@ -156,20 +156,20 @@ const VideoManagement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black flex flex-col">
+
       {/* Delete Confirmation Modal */}
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-6 max-w-md w-full">
-            <div className="flex items-center gap-2 mb-4">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-4 sm:p-6 max-w-sm w-full">
+            <div className="flex items-center gap-2 mb-3">
               <AlertTriangle className="w-5 h-5 text-red-400" />
-              <h3 className="text-lg font-semibold text-white">Delete Video</h3>
+              <h3 className="text -lg font-semibold text-white">Delete Video</h3>
             </div>
-            <p className="text-gray-200 mb-6 text-sm">
-              Are you sure you want to delete this video? This action cannot be
-              undone.
+            <p className="text-gray-200 mb-4 text-sm">
+              Are you sure you want to delete this video? This action cannot be undone.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               <button
                 onClick={() => handleDelete(deleteConfirm)}
                 className="flex-1 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium"
@@ -178,7 +178,7 @@ const VideoManagement = () => {
               </button>
               <button
                 onClick={() => setDeleteConfirm(null)}
-                className="flex-1 px-3 py-2 bg-neutral-600 hover:bg-neutral-900 text-white rounded-md text-sm"
+                className="flex-1 px-3 py-2 bg-neutral-600 hover:bg-neutral-700 text-white rounded-md text-sm"
               >
                 Cancel
               </button>
@@ -200,22 +200,23 @@ const VideoManagement = () => {
           saving={saving}
         />
       )}
-
       {/* Header Section */}
-      <div className="pt-20 pb-8">
-        <div className="px-6">
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-              My Videos
-            </h1>
-            <p className="text-gray-400 text-lg">Manage your video content</p>
-          </div>
+      {/* Header Section */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 lg:px-8 mt-4 mb-6">
+        <div className="flex items-center gap-2">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white m-0">
+            My Videos / Uploads
+          </h1>
         </div>
+        <p className="text-gray-400 text-sm sm:text-base mt-1 sm:mt-0">
+          Manage your video content
+        </p>
       </div>
 
-      {/* Videos Grid Container */}
-      <div className="p-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-6">
+
+      {/* Videos Grid */}
+      <div className="flex-1 px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
           {videos.map((video) => (
             <VideoCard2
               key={video._id}
@@ -228,10 +229,10 @@ const VideoManagement = () => {
 
         {/* Empty State */}
         {videos.length === 0 && !loading && (
-          <div className="text-center py-16">
+          <div className="text-center py-12 sm:py-16">
             <div className="text-gray-500 mb-4">
               <svg
-                className="w-16 h-16 mx-auto mb-4"
+                className="w-14 h-14 mx-auto mb-2 sm:w-16 sm:h-16"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -244,30 +245,32 @@ const VideoManagement = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No videos yet</h3>
-            <p className="text-gray-400">Start creating content to see your videos here</p>
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-1">No videos yet</h3>
+            <p className="text-gray-400 text-sm sm:text-base">Start creating content to see your videos here</p>
           </div>
         )}
       </div>
 
+      {/* Utility Styles */}
       <style>
         {`
-          .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-          .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-        `}
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}
       </style>
     </div>
   );
+
 };
 
 export default VideoManagement;
