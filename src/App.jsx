@@ -20,6 +20,8 @@ import TrendingPage from './pages/trendingpage.jsx';
 import ProtectedRoute from './hooks/protectedRoute.jsx';
 import NotFoundPage from './pages/notfound.jsx';
 import { SearchPage } from './pages/searchPage.jsx';
+import TermsOfService from './pages/terms.jsx';
+
 function App() {
   return (
     <BrowserRouter>
@@ -49,7 +51,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<BillionTubeAbout />} />
         <Route path="/unauthorized404" element={<UnauthorizedPage />} />
+        <Route path="/terms" element={<TermsOfService />} />
+
         <Route path="*" element={<NotFoundPage />} />
+
       </Routes>
     </BrowserRouter >
   )

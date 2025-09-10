@@ -5,18 +5,20 @@ import { useNotification } from '../context/notificationcontext';
 import { timeAgo, formatViews } from '../utils/timeago';
 import { Blueloader } from '../components/loaders/blueloader';
 import { VideoCard3 } from '../components/cards&buttons/historyCard';
+
 const WatchHistory = () => {
     const showNotification = useNotification();
     const [loading, setLoading] = useState(true);
+    const [clearingHistory, setClearingHistory] = useState(false);
     const [watchHistory, setWatchHistory] = useState([]);
     const [showClearModal, setShowClearModal] = useState(false);
+
     useEffect(() => {
         const fetchWatchHistory = async () => {
             setLoading(true);
             try {
                 const response = await WatchhistoryAPI.fetchWatchHistory();
                 setWatchHistory(response.data);
-
                 setLoading(false)
             } catch (error) {
                 console.error('Error fetching watch history:', error);
@@ -26,12 +28,12 @@ const WatchHistory = () => {
         };
         fetchWatchHistory();
     }, []);
+
     const removeFromHistory = async (videoId, title) => {
         try {
             await WatchhistoryAPI.removeVideofromWatchHistory(videoId)
             setWatchHistory(prev => prev.filter(vid => vid.video._id !== videoId));
             showNotification(`"${title}" removed from watch history`);
-
         } catch (error) {
             showNotification('Failed to remove from history', 'error');
             console.error('Error removing from history:', error);
@@ -39,24 +41,28 @@ const WatchHistory = () => {
     };
 
     const clearAllHistory = async () => {
+        setClearingHistory(true);
         try {
-            const response = await WatchhistoryAPI.clearWatchHistory();
-            if (response === 200) {
-                setWatchHistory([]);
-                showNotification('Watch history cleared successfully');
-                setShowClearModal(false);
+            await WatchhistoryAPI.clearWatchHistory();
 
-            }
+            setWatchHistory([]);
+            showNotification('Watch history cleared successfully');
+            setShowClearModal(false);
+
         } catch (error) {
             showNotification('Failed to clear history', 'error');
             console.error('Error clearing history:', error);
+        } finally {
+            setClearingHistory(false);
         }
     };
+
     if (loading) {
         return (
             <Blueloader />
         );
     }
+
     return (
         <div className="min-h-screen bg-black text-white">
             {/* Clear History Modal */}
@@ -85,15 +91,24 @@ const WatchHistory = () => {
                         <div className="flex flex-col sm:flex-row gap-3">
                             <button
                                 onClick={() => setShowClearModal(false)}
-                                className="flex-1 px-4 py-2 text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors border border-gray-700 text-sm"
+                                disabled={clearingHistory}
+                                className="flex-1 px-4 py-2 text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors border border-gray-700 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={clearAllHistory}
-                                className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium text-sm"
+                                disabled={clearingHistory}
+                                className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                             >
-                                Clear All History
+                                {clearingHistory ? (
+                                    <>
+                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                        <span>Clearing...</span>
+                                    </>
+                                ) : (
+                                    'Clear All History'
+                                )}
                             </button>
                         </div>
                     </div>

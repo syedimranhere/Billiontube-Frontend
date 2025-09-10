@@ -17,13 +17,15 @@ export default function LoginPage() {
 
     return (
         <div className="relative min-h-screen bg-black overflow-hidden">
-            {/* Blurred Background Image */}
             <div
-                className="absolute inset-0 z-10 bg-cover bg-center blur-xl opacity-90"
+                className="absolute inset-0 opacity-40"
                 style={{
-                    backgroundImage: "url('/neonbg.webp')"
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cpath fill='none' stroke='%2300f' stroke-width='7' d='M0 200 C200 100 600 300 800 200 S1400 100 1600 200'/%3E%3Cpath fill='none' stroke='%2300f' stroke-width='4' d='M0 400 C200 300 600 500 800 400 S1400 300 1600 400'/%3E%3Cpath fill='none' stroke='%2300f' stroke-width='0.5' d='M0 600 C200 500 600 700 800 600 S1400 500 1600 600'/%3E%3C/svg%3E")`,
+
                 }}
             ></div>
+
+
 
             {/* Header */}
             <header className="absolute top-0 left-0 right-0 z-30 p-4 sm:p-6">
@@ -38,7 +40,7 @@ export default function LoginPage() {
             <main className="relative z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 pt-16 sm:pt-20">
                 <div className="w-full max-w-md sm:max-w-lg">
                     {/* Compact Login Card */}
-                    <div className="bg-neutral-900/95 backdrop-blur-xl border border-neutral-800/80 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                    <div className="bg-neutral-900/95 backdrop-blur-xl opacity-90 border border-neutral-800/80 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl relative">
                         {/* Subtle gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-transparent rounded-xl sm:rounded-2xl pointer-events-none"></div>
 
