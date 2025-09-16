@@ -184,7 +184,7 @@ export default function SignupPage() {
                     accept="image/*"
                     onChange={handleFileChange}
                     className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white file:mr-3 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-medium file:bg-neutral-700 file:text-white hover:file:bg-neutral-600 file:cursor-pointer cursor-pointer focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 text-sm"
-                    required
+
                   />
                 </div>
 
