@@ -16,43 +16,58 @@ const BillionTubeAbout = () => {
 
             <section className="pt-12 sm:pt-16 pb-12 sm:pb-16">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                    <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 items-center min-h-[auto] sm:min-h-[60vh]">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                         {/* Left Content */}
-                        <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-                            <div>
-                                <p className="text-zinc-400 text-sm sm:text-base mb-1 sm:mb-2">Hi, I am</p>
-                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3 leading-tight">
-                                    Syed Imran
-                                </h1>
-                                <p className="text-base sm:text-lg text-zinc-400 mb-3 sm:mb-4">
-                                    Fullstack Developer
+                        <div className="space-y-4 sm:space-y-6">
+                            <p className="text-zinc-400 text-sm sm:text-base">Hi, I’m</p>
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                                Syed Imran
+                            </h1>
+                            <p className="text-base sm:text-lg text-zinc-400">
+                                Fullstack Developer
+                            </p>
+
+                            <div className="space-y-3 sm:space-y-4">
+                                <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                                    <span className="italic">BillionTube v1.0</span> is my first full MERN project —
+                                    a learning-ground video platform where I’m testing myself against
+                                    real-world dev problems. It’s less a “finished product” and more a
+                                    <span className="italic"> training arena</span> for authentication, UX, and performance.
+                                </p>
+
+                                <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                                    Every bug I squash and feature I push sharpens my skills for the
+                                    next level. This isn’t theory — it’s code under pressure, proving I
+                                    can ship and iterate.
+                                </p>
+
+                                <p className="text-zinc-400 text-xs sm:text-sm italic leading-relaxed max-w-xl">
+                                    Could it go further? Absolutely. Security upgrades, deeper auth
+                                    flows, and richer social layers are already on the roadmap. But the
+                                    point of v1 is simple: ship fast, break things, learn faster.
+                                </p>
+
+                                <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                                    Future releases will add
+                                    <span className="text-white font-medium">
+                                        {" "}
+                                        AI-driven content tools, stronger security, integrated workflows,
+                                        and scalable social features
+                                    </span>
+                                    . Each iteration brings BillionTube closer to production-grade
+                                    readiness — and me closer to mastering the craft.
                                 </p>
                             </div>
 
-                            <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-full sm:max-w-lg mx-auto lg:mx-0">
-                                BillionTube is my learning-phase video app where I’m stress-testing UX, authentication, and performance. Iterating fast, fixing bugs, and pushing toward scale.
-                            </p>
-
-                            <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-full sm:max-w-lg mx-auto lg:mx-0">
-                                I am currently in the learning phase of my journey as a fullstack developer, building projects that act as battlegrounds to sharpen my skills. Each project, including BillionTube, is designed to test me against real-world challenges so I can demonstrate not just theory, but practical, job-ready abilities.
-                            </p>
-
-                            <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed italic max-w-full sm:max-w-lg mx-auto lg:mx-0">
-                                Of course, there are areas where this could go further — more advanced authentication flows, security hardening, and extra features I already know about but haven’t shipped yet. What you see here is me pushing to the edge of what I can deliver right now, and then leveling up with each iteration.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-4 sm:mt-6">
-                                <p
-
-                                    className="bg-white text-zinc-900 px-5 sm:px-7 py-2 sm:py-3 rounded-md font-medium"
-                                >
+                            {/* Contact Section */}
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start lg:items-center mt-6">
+                                <p className="bg-white text-zinc-900 px-5 sm:px-7 py-2 sm:py-3 rounded-md font-medium text-sm sm:text-base">
                                     Get In Touch
-
                                 </p>
 
                                 <div className="flex gap-2 sm:gap-3">
                                     <a
-                                        href="https://mail.google.com/mail/?view=cm&fs=1&to=imransyedhere@gmail.com&su=Let%27s%20Connect&body=Hey%20Imran,%20I%20checked%20out%20BillionTube!"
+                                        href="mailto:imransyedhere@gmail.com"
                                         className="p-2 sm:p-3 rounded-md bg-zinc-800 hover:bg-zinc-700 transition-colors"
                                     >
                                         <Mail size={18} className="sm:w-5 sm:h-5" />
@@ -78,12 +93,12 @@ const BillionTubeAbout = () => {
                         </div>
 
                         {/* Right Image */}
-                        <div className="flex justify-center lg:justify-end mt-6 lg:mt-0">
-                            <div className="w-48 sm:w-60 md:w-72 lg:w-80 h-48 sm:h-60 md:h-72 lg:h-96 rounded-2xl overflow-hidden bg-zinc-800 border border-zinc-700">
+                        <div className="flex justify-center lg:justify-end">
+                            <div className="w-50 sm:w-60 md:w-72 lg:w-80 h-50 sm:h-60 md:h-95 lg:h-95 rounded-2xl overflow-hidden bg-zinc-800 border border-zinc-700 shadow-lg">
                                 <img
-                                    src="https://res.cloudinary.com/dbvxna33m/image/upload/v1756931759/billiontube/images/image_1756931757519.jpg"
+                                    src="https://res.cloudinary.com/dgrmnftvf/image/upload/v1757974409/billiontube/images/image_1757974414404.jpg"
                                     alt="Profile"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover object-center"
                                 />
                             </div>
                         </div>
@@ -92,7 +107,6 @@ const BillionTubeAbout = () => {
             </section>
         </div>
     );
-
 };
 
 export default BillionTubeAbout;

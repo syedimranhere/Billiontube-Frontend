@@ -66,11 +66,14 @@ export const useRegister = () => {
       form.append("country", formData.country);
       form.append("avatar", formData.avatar);
 
-      const response = await usersAPI.register(form);
-      showNotification("Account created successfully", true);
+      await usersAPI.register(form);
+      showNotification("Account created successfully - Login", true);
       navigate("/login");
     } catch (err) {
-      setError("An error occurred while creating your account.");
+      setError(
+        err.response.data.message ||
+          "An error occurred while creating your account."
+      );
       setLoading(false);
     }
   };

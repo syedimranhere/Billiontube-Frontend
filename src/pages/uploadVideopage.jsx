@@ -1,5 +1,7 @@
 
 import { useUploadvideo } from '../hooks/videos/useUploadVideo';
+import { UploadCloud, Image as ImageIcon, CheckCircle } from "lucide-react";
+
 const VideoUploadPage = () => {
     const {
         videoFile,
@@ -47,7 +49,7 @@ const VideoUploadPage = () => {
                     <div className="flex flex-col items-center justify-center">
                         <div
                             className={`w-20 h-20 flex items-center justify-center rounded-full mb-5 text-2xl font-bold
-              ${videoFile ? "bg-green-600 text-black" : "bg-neutral-800 text-gray-300"}
+              ${videoFile ? "bg-blue-600 text-black" : "bg-neutral-800 text-gray-300"}
             `}
                         >
                             {videoFile ? "✓" : "↑"}
@@ -129,17 +131,41 @@ const VideoUploadPage = () => {
                         </select>
                     </div>
 
+
                     {/* Thumbnail */}
-                    <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Thumbnail</label>
+                    <div className="w-full max-w-sm">
+                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Thumbnail
+                        </label>
+
                         <div
                             onClick={() => !uploading && thumbnailInputRef.current?.click()}
-                            className={`w-40 h-24 flex items-center justify-center border-2 border-dashed rounded-lg cursor-pointer
-              ${thumbnail ? "border-green-600 bg-neutral-900" : "border-neutral-700 hover:border-gray-500"}
-            `}
+                            className={`
+      flex flex-col items-center justify-center 
+      w-full sm:w-64 md:w-80 h-32 sm:h-40
+      border-2 border-dashed rounded-2xl 
+      cursor-pointer transition-all duration-200
+      ${thumbnail
+                                    ? "border-gray-500 bg-neutral-900"
+                                    : "border-neutral-700 hover:border-gray-500 hover:bg-neutral-800"}
+    `}
                         >
-                            {thumbnail ? "✓ Selected" : "Upload Thumbnail"}
+                            {thumbnail ? (
+                                <div className="flex flex-col items-center text-blue-600">
+                                    <CheckCircle className="h-8 w-8 mb-2" />
+                                    <span className="text-sm">Thumbnail Selected</span>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center text-gray-400">
+                                    <UploadCloud className="h-10 w-10 mb-2" />
+                                    <span className="text-sm text-gray-300">
+                                        Click to Upload
+                                    </span>
+                                    <span className="text-xs text-gray-500">PNG, JPG up to 10MB</span>
+                                </div>
+                            )}
                         </div>
+
                         <input
                             ref={thumbnailInputRef}
                             type="file"
@@ -149,6 +175,7 @@ const VideoUploadPage = () => {
                             disabled={uploading}
                         />
                     </div>
+
 
                     {/* Visibility */}
                     <div>

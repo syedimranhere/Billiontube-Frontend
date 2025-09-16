@@ -17,13 +17,13 @@ function Footer() {
                         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 order-2 lg:order-2">
                             <a
                                 href="/about"
-                                className="text-neutral-400 hover:text-purple-400 text-xs sm:text-sm font-medium transition-colors duration-200"
+                                className="text-neutral-400 hover:text-blue-600 text-xs sm:text-sm font-medium transition-colors duration-200"
                             >
                                 About Us
                             </a>
                             <a
                                 href="/terms"
-                                className="text-neutral-500 hover:text-purple-400 text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
+                                className="text-neutral-500 hover:text-blue-600 text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap"
                             >
                                 Terms & Conditions
                             </a>

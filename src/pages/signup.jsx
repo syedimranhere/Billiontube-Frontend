@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../components/cards&buttons/button';
 import { useRegister } from '../hooks/user/useRegister';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, Loader2 } from 'lucide-react';
 
 export default function SignupPage() {
   const {
@@ -28,9 +28,6 @@ export default function SignupPage() {
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cpath fill='none' stroke='%2300f' stroke-width='7' d='M0 200 C200 100 600 300 800 200 S1400 100 1600 200'/%3E%3Cpath fill='none' stroke='%2300f' stroke-width='4' d='M0 400 C200 300 600 500 800 400 S1400 300 1600 400'/%3E%3Cpath fill='none' stroke='%2300f' stroke-width='0.5' d='M0 600 C200 500 600 700 800 600 S1400 500 1600 600'/%3E%3C/svg%3E")`,
         }}
       ></div>
-
-
-
 
       <header className="absolute top-0 left-0 right-0 z-30 p-4 sm:p-6">
         <Link
@@ -203,11 +200,19 @@ export default function SignupPage() {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-2.5 text-sm font-medium"
+                    className="w-full py-2.5 text-sm font-medium flex items-center justify-center gap-2"
                   >
-                    {loading ? "Creating Account..." : "Create Account"}
+                    {loading ? (
+                      <>
+                        <Loader2 className="animate-spin text-black h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
+                        <span className="hidden sm:inline">Creating...</span>
+                      </>
+                    ) : (
+                      "Create Account"
+                    )}
                   </Button>
                 </div>
+
               </form>
 
               {/* Terms notice for mobile */}

@@ -29,7 +29,8 @@ export const UserProvider = ({ children }) => {
         setUser,
         Authenticated,
         setAuthenticated,
-        loading
+        loading,
+
     }
     return (
         <UserContext.Provider value={values}>

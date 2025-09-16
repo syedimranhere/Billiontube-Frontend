@@ -71,4 +71,7 @@ export const usersAPI = {
       headers: { "Content-Type": "multipart/form-data" },
     });
   },
+  deleteAccount: async () => {
+    await api.post("/user/deleteMe");
+  },
 };

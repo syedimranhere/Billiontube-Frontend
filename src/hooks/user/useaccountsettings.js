@@ -2,11 +2,11 @@ import { UseUserContext } from "../../context/AuthContext";
 import { useNotification } from "../../context/notificationcontext";
 import { useState, useRef, useEffect } from "react";
 import { usersAPI } from "../../services/usersservice";
-
+import { useNavigate } from "react-router-dom";
 export const useAccountSettings = () => {
   const { showNotification } = useNotification();
-  const { user, updateUser } = UseUserContext(); // Assuming you have updateUser function
-
+  const { user, updateUser, setAuthenticated } = UseUserContext(); // Assuming you have updateUser function
+  const navigate = useNavigate();
   const [pfploading, setpfploading] = useState(false);
   const [settingit, setsettingit] = useState(false);
 
@@ -32,6 +32,23 @@ export const useAccountSettings = () => {
     fullname: false,
     password: false,
   });
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [deleting, setdeleting] = useState(false);
+
+  const handleDelete = async () => {
+    try {
+      setdeleting(true);
+      await usersAPI.deleteAccount();
+      console.log("Account deleted");
+      setShowConfirmDelete(false); // Close modal first
+
+      setAuthenticated(false);
+    } catch (error) {
+      showNotification("Error deleting account - Try Again Later");
+      setShowConfirmDelete(false); // Still close on error
+      setdeleting(false);
+    }
+  };
 
   const fileInputRef = useRef(null);
 
@@ -231,7 +248,11 @@ export const useAccountSettings = () => {
     handleUsernameSubmit,
     handleFullnameSubmit,
     handlePasswordSubmit,
+    setShowConfirmDelete,
+    showConfirmDelete,
     handleCancel,
+    handleDelete,
+    deleting,
     user,
   };
 };

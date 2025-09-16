@@ -54,6 +54,8 @@ const WatchHistory = () => {
             console.error('Error clearing history:', error);
         } finally {
             setClearingHistory(false);
+            setShowClearModal(false);
+
         }
     };
 

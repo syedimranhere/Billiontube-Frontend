@@ -78,38 +78,58 @@ const NotificationItem = ({ notification, onRemove }) => {
     return (
         <div
             className={`transform transition-all duration-400 ease-in-out ${isVisible
-                ? 'translate-x-0 opacity-100 scale-100'
-                : 'translate-x-full opacity-0 scale-95'
+                    ? "translate-x-0 opacity-100 scale-100"
+                    : "translate-x-full opacity-0 scale-95"
                 }`}
         >
-            <div className={`
-                px-3 py-3 sm:px-5 sm:py-4 rounded-lg shadow-lg border-l-4 
-                w-full sm:min-w-80 sm:max-w-96
-                ${notification.success
-                    ? 'bg-neutral-950 text-neutral-200 border-green-400'
-                    : 'bg-neutral-950 border-red-500 text-neutral-200'
-                }
-            `}>
-                <div className="flex items-start justify-between gap-3">
+            <div
+                className={`
+        px-3 py-2 sm:px-5 sm:py-4 rounded-lg shadow-lg border-l-4 
+        w-full max-w-[90%] sm:max-w-md
+        ${notification.success
+                        ? "bg-neutral-950 text-neutral-200 border-green-400"
+                        : "bg-neutral-950 border-red-500 text-neutral-200"
+                    }
+      `}
+            >
+                <div className="flex items-start justify-between gap-2 sm:gap-3">
+                    {/* Left Section */}
                     <div className="flex items-start flex-1 min-w-0">
-                        <div className={`w-2 h-2 rounded-full mt-1 mr-3 flex-shrink-0 ${notification.success ? 'bg-green-400' : 'bg-red-500'
-                            }`}></div>
+                        <div
+                            className={`w-2 h-2 rounded-full mt-1 mr-2 sm:mr-3 flex-shrink-0 ${notification.success ? "bg-green-400" : "bg-red-500"
+                                }`}
+                        ></div>
                         <p className="text-sm sm:text-base font-medium leading-relaxed break-words">
                             {notification.message}
                         </p>
                     </div>
+
+                    {/* Close Button */}
                     <button
                         onClick={handleRemove}
                         className="flex-shrink-0 text-gray-400 hover:text-gray-200 transition-colors 
-                                   p-1 -m-1 rounded touch-manipulation"
+                     p-1 rounded touch-manipulation active:scale-90"
                         aria-label="Close notification"
                     >
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                        <svg
+                            className="w-5 h-5 sm:w-6 sm:h-6"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 
+                 0 111.414 1.414L11.414 10l4.293 4.293a1 1 
+                 0 01-1.414 1.414L10 11.414l-4.293 
+                 4.293a1 1 0 01-1.414-1.414L8.586 
+                 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                            />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
     );
+
 };

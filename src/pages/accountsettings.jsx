@@ -2,6 +2,7 @@ import { Camera, Edit3, Lock, User, Save, X } from 'lucide-react';
 import { timeAgo } from "../utils/timeago.js";
 import { Loader2 } from 'lucide-react';
 import { useAccountSettings } from "../hooks/user/useaccountsettings.js";
+import { Trash2 } from 'lucide-react';
 
 const AccountSettings = () => {
     const {
@@ -24,11 +25,65 @@ const AccountSettings = () => {
         handleFullnameSubmit,
         handlePasswordSubmit,
         handleCancel,
-        user
+        showConfirmDelete,
+        setShowConfirmDelete,
+        user,
+        deleting,
+
+        handleDelete,
     } = useAccountSettings();
+
 
     return (
         <div className="min-h-screen bg-black">
+            {
+                showConfirmDelete && (
+                    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+                        <div className="bg-neutral-900 rounded-lg border border-neutral-700 p-4 sm:p-6 max-w-sm sm:max-w-md w-full">
+                            {/* Header */}
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-8 h-8 bg-red-600/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <Trash2 className="text-red-500 w-5 h-5" />
+                                </div>
+                                <h2 className="text-lg font-semibold text-white">Delete Account</h2>
+                            </div>
+
+                            {/* Content */}
+                            <div className="mb-6">
+                                <p className="text-gray-300 mb-2 text-sm">
+                                    Are you sure you want to delete your account?
+                                </p>
+                                <p className="text-red-400 text-xs">
+                                    This action cannot be undone. You will lose all your uploaded videos and data.
+                                </p>
+                            </div>
+
+                            {/* Actions */}
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <button
+                                    onClick={() => setShowConfirmDelete(false)}
+
+                                    className="flex-1 px-4 py-2 text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors border border-gray-700 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleDelete}
+
+                                    className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium text-sm flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {deleting ? (
+                                        <Loader2 className="h-4 w-4 animate-spin" />
+                                    ) : (
+                                        "Delete Permanently"
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
 
                 {/* Page Header */}
@@ -391,6 +446,39 @@ const AccountSettings = () => {
                         </form>
                     )}
                 </section>
+
+                {/* Danger Zone Section */}
+                <section
+                    className="bg-black rounded-lg sm:rounded-xl border border-red-500/30 p-4 sm:p-6 lg:p-8 mt-8"
+                    aria-labelledby="danger-zone-heading"
+                >
+                    <h2
+                        id="danger-zone-heading"
+                        className="text-lg sm:text-xl font-semibold text-red-400 mb-4"
+                    >
+                        Danger Zone
+                    </h2>
+
+                    <p className="text-sm text-neutral-400 mb-4">
+                        Once you delete your account, there is no going back. Please be certain.
+                    </p>
+
+                    <div className="flex justify-center">
+                        <button
+                            type="button"
+                            onClick={() => setShowConfirmDelete(true)}
+                            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 
+                 bg-red-600 text-white rounded-lg 
+                 hover:bg-red-500 active:bg-red-700
+                 transition-colors flex items-center justify-center 
+                 space-x-2 text-sm sm:text-base font-medium"
+                        >
+                            Delete my account
+                        </button>
+                    </div>
+                </section>
+
+
             </div>
         </div>
     );
