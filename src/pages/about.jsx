@@ -29,33 +29,26 @@ const BillionTubeAbout = () => {
 
                             <div className="space-y-3 sm:space-y-4">
                                 <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
-                                    <span className="italic">BillionTube v1.0</span> is my first full MERN project —
-                                    a learning-ground video platform where I’m testing myself against
-                                    real-world dev problems. It’s less a “finished product” and more a
-                                    <span className="italic"> training arena</span> for authentication, UX, and performance.
+                                    <span className="italic">BillionTube v1.0</span> BillionTube v1.0 is my first full MERN stack project - a video platform where I'm learning real-world development. I built it to practice user authentication, handle file uploads, and understand how everything works together.
+
                                 </p>
 
                                 <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
-                                    Every bug I squash and feature I push sharpens my skills for the
-                                    next level. This isn’t theory — it’s code under pressure, proving I
-                                    can ship and iterate.
+                                    Working on this project taught me more than any tutorial. Every bug I fixed and feature I added helped me understand web development better. It's practical experience that I can build on for future projects.
                                 </p>
 
-                                <p className="text-zinc-400 text-xs sm:text-sm italic leading-relaxed max-w-xl">
-                                    Could it go further? Absolutely. Security upgrades, deeper auth
-                                    flows, and richer social layers are already on the roadmap. But the
-                                    point of v1 is simple: ship fast, break things, learn faster.
+                                <p className="text-zinc-00 text-xs sm:text-sm italic leading-relaxed max-w-xl">
+                                    Is it perfect? Hell no. There's still room for improvement - better security, smoother user experience, and additional features. But getting v1.0 working and deployed was an important milestone in my learning journey.
                                 </p>
 
-                                <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
-                                    Future releases will add
+                                <p className="text-white font-medium text-sm sm:text-base leading-relaxed max-w-xl">
+                                    Future releases will
                                     <span className="text-white font-medium">
                                         {" "}
-                                        AI-driven content tools, stronger security, integrated workflows,
-                                        and scalable social features
+                                        include improved content discovery, enhanced security features, better user workflows, and social interaction tools . Each version helps me grow as a developer and understand what it takes to build production-quality applications.
                                     </span>
-                                    . Each iteration brings BillionTube closer to production-grade
-                                    readiness — and me closer to mastering the craft.
+
+
                                 </p>
                             </div>
 
