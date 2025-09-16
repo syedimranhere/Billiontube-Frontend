@@ -47,8 +47,7 @@ export const useRegister = () => {
       !formData.username ||
       !formData.password ||
       !formData.gender ||
-      !formData.country ||
-      !formData.avatar
+      !formData.country
     ) {
       showNotification("Please fill all the fields", false);
       return;
