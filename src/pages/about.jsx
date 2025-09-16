@@ -65,36 +65,44 @@ const BillionTubeAbout = () => {
                                     Get In Touch
                                 </p>
 
-                                <div className="flex gap-2 sm:gap-3">
-                                    <a
-                                        href="mailto:imransyedhere@gmail.com"
-                                        className="p-2 sm:p-3 rounded-md bg-zinc-800 hover:bg-zinc-700 transition-colors"
+                                <div className="flex gap-2 sm:gap-3 items-center">
+                                    {/* Email as plain text */}
+                                    <div
+                                        className="px-3 py-2 sm:px-4 sm:py-2 rounded-md bg-zinc-800 text-sm text-white cursor-text select-all"
+                                        aria-label="Copy Email"
                                     >
-                                        <Mail size={18} className="sm:w-5 sm:h-5" />
-                                    </a>
+                                        imransyedhere@gmail.com
+                                    </div>
+
+                                    {/* GitHub */}
                                     <a
                                         href="https://github.com/syedimranhere"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="p-2 sm:p-3 rounded-md bg-zinc-800 hover:bg-zinc-700 transition-colors"
+                                        aria-label="GitHub Profile"
                                     >
-                                        <Github size={18} className="sm:w-5 sm:h-5" />
+                                        <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                                     </a>
+
+                                    {/* LinkedIn */}
                                     <a
                                         href="https://www.linkedin.com/in/syed-imran-111538372/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="p-2 sm:p-3 rounded-md bg-zinc-800 hover:bg-zinc-700 transition-colors"
+                                        aria-label="LinkedIn Profile"
                                     >
-                                        <Linkedin size={18} className="sm:w-5 sm:h-5" />
+                                        <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                                     </a>
                                 </div>
+
+
                             </div>
                         </div>
 
-                        {/* Right Image */}
                         <div className="flex justify-center lg:justify-end">
-                            <div className="w-50 sm:w-60 md:w-72 lg:w-80 h-50 sm:h-60 md:h-95 lg:h-95 rounded-2xl overflow-hidden bg-zinc-800 border border-zinc-700 shadow-lg">
+                            <div className="w-[200px] sm:w-[240px] md:w-[288px] lg:w-[320px] h-[200px] sm:h-[240px] md:h-[380px] lg:h-[380px] rounded-2xl overflow-hidden bg-zinc-800 border border-zinc-700 shadow-lg">
                                 <img
                                     src="https://res.cloudinary.com/dgrmnftvf/image/upload/v1757974409/billiontube/images/image_1757974414404.jpg"
                                     alt="Profile"
@@ -102,6 +110,7 @@ const BillionTubeAbout = () => {
                                 />
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
