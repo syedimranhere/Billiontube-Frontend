@@ -4,9 +4,7 @@ import { useParams } from "react-router-dom";
 import { usersAPI } from '../services/usersservice';
 import { videosAPI } from '../services/videosservice';
 import VideoCard from '../components/cards&buttons/videoCard';
-const LoadingSkeleton = ({ className = '' }) => (
-    <div className={`bg-neutral-700 animate-pulse rounded-lg ${className}`}></div>
-);
+import ProfilePageLoader from '../components/loaders/profilePageLoader';
 const ProfilePage = () => {
     const { userId } = useParams();
     const [userData, setUserData] = useState(null);
@@ -33,6 +31,9 @@ const ProfilePage = () => {
     };
     useEffect(() => { fetchUserProfile(); }, [userId]);
 
+    if (loading) {
+        return (< ProfilePageLoader />)
+    }
     if (error) {
         return (
             <div className="min-h-screen bg-neutral-900 text-white flex items-center justify-center">
@@ -49,129 +50,121 @@ const ProfilePage = () => {
             </div>
         );
     }
-
     return (
         <div className="min-h-screen bg-black text-white">
-            <div className="flex flex-col lg:flex-row max-w-full mx-auto">
-                {/* Sidebar */}
-                <aside className="w-full lg:w-72 p-6 border-r border-neutral-800 bg-neutral-950/40 flex-shrink-0">
-                    {/* Avatar */}
-                    <div className="flex justify-center mb-8">
-                        {loading ? (
-                            <LoadingSkeleton className="w-32 h-32 rounded-full" />
-                        ) : (
-                            <div className="w-32 h-32 rounded-full bg-neutral-200 border-4 border-neutral-700 overflow-hidden shadow-lg">
+            <div className="max-w-full mx-auto p-4 sm:p-6">
+                {/* Header */}
+                <section className="mb-6 border-b border-neutral-800 pb-6">
+
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+                        {/* Left: Avatar + Name */}
+                        <div className="flex items-center gap-4 sm:gap-6">
+                            {/* Avatar */}
+                            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-neutral-200 border-4 border-neutral-700 overflow-hidden shadow-lg">
                                 {userData?.avatar ? (
-                                    <img src={userData.avatar} className="w-full h-full object-cover" />
+                                    <img
+                                        src={userData.avatar}
+                                        className="w-full h-full object-cover"
+                                        alt={`${userData?.fullname || "User"} avatar`}
+                                    />
                                 ) : (
-                                    <User className="w-16 h-16 text-neutral-400 mx-auto mt-8" />
+                                    <User className="w-10 h-10 sm:w-12 sm:h-12 text-neutral-400 mx-auto mt-5" />
                                 )}
                             </div>
-                        )}
-                    </div>
 
-                    {/* Statistics */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-semibold text-center text-neutral-300">Statistics</h3>
-                        {loading ? (
-                            <>
-                                <LoadingSkeleton className="h-20 rounded-xl" />
-                                <LoadingSkeleton className="h-20 rounded-xl" />
-                            </>
-                        ) : (
-                            <div className="flex flex-col gap-6">
-                                {/* Videos Card */}
-                                <div className="bg-neutral-900 rounded-2xl p-6 text-center border border-neutral-800 hover:border-neutral-600 shadow-lg transition-all">
-                                    <div className="flex items-center justify-center mb-3 text-lg text-neutral-400">
-                                        <Play className="w-5 h-5 text-blue-400 mr-2" />
-                                        Videos
-                                    </div>
-                                    <div className="text-3xl font-bold text-white">{userVideos.length}</div>
-                                </div>
-
-                                {/* Total Views Card */}
-                                <div className="bg-neutral-900 rounded-2xl p-6 text-center border border-neutral-800 hover:border-neutral-600 shadow-lg transition-all">
-                                    <div className="flex items-center justify-center mb-3 text-lg text-neutral-400">
-                                        <Eye className="w-5 h-5 text-yellow-500 mr-2" />
-                                        Total Views
-                                    </div>
-                                    <div className="text-3xl font-bold text-white">{userData.totalViews}</div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </aside>
-
-                {/* Main */}
-                <main className="flex-1 p-6">
-                    {/* Header */}
-                    <section className="mb-6 border-b border-neutral-800 pb-4">
-                        {loading ? (
-                            <div className="space-y-4">
-                                <LoadingSkeleton className="h-10 w-64" />
-                                <LoadingSkeleton className="h-6 w-48" />
-                            </div>
-                        ) : (
+                            {/* Name + Meta */}
                             <div>
-                                <div className="flex items-center space-x-4 mb-3 flex-wrap">
-                                    <h1 className="text-3xl font-bold">{userData?.fullname}</h1>
-                                    <span className="text-neutral-400 text-lg">@{userData?.username}</span>
+                                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                                    {userData?.fullname || "Unnamed"}
+                                </h1>
+                                <div className="text-neutral-400 text-sm sm:text-base mt-1">
+                                    @{userData?.username ?? "unknown"}
                                 </div>
-                                <div className="flex items-center space-x-6 text-neutral-400 text-sm flex-wrap">
-                                    <div className="flex items-center space-x-1">
-                                        <MapPin className="w-5 h-5" />
-                                        <span>{userData?.country}</span>
+
+                                {/* Meta Info */}
+                                <div className="flex flex-wrap gap-3 text-neutral-400 text-sm sm:text-base mt-2">
+                                    <div className="flex items-center gap-2">
+                                        <MapPin className="w-4 h-4" />
+                                        <span>{userData?.country ?? "—"}</span>
                                     </div>
-                                    <div className="flex items-center space-x-1">
-                                        <User className="w-5 h-5" />
-                                        <span>{userData?.gender === "Male" ? "he/him" : "she/her"}</span>
+
+                                    <div className="flex items-center gap-2">
+                                        <User className="w-4 h-4" />
+                                        <span>
+                                            {userData?.gender === "Male"
+                                                ? "he/him"
+                                                : userData?.gender === "Female"
+                                                    ? "she/her"
+                                                    : userData?.gender ?? "they/them"}
+                                        </span>
                                     </div>
-                                    <div className="flex items-center space-x-1">
-                                        <Calendar className="w-5 h-5" />
+
+                                    <div className="flex items-center gap-2">
+                                        <Calendar className="w-4 h-4" />
                                         <span>
                                             Joined{" "}
-                                            {userData?.createdAt && new Date(userData.createdAt).toLocaleDateString()}
+                                            {userData?.createdAt
+                                                ? new Date(userData.createdAt).toLocaleDateString()
+                                                : "—"}
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                        )}
-                    </section>
-
-                    {/* Latest Videos */}
-                    <section>
-                        <h2 className="text-2xl font-semibold mb-6">🎥 Latest Videos</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-                            {loading
-                                ? Array(7)
-                                    .fill(0)
-                                    .map((_, i) => <VideoCard key={i} isLoading={true} />)
-                                : userVideos.map((vid) => (
-                                    <VideoCard
-                                        key={vid._id}
-                                        videoId={vid._id}
-                                        views={vid.views}
-                                        title={vid.title}
-                                        thumbnail={vid.thumbnail}
-                                        timeAgo={vid.timeAgo}
-                                        timestamps={vid.uploadDate}
-                                        owner={vid.owner._id}
-                                        duration={vid.duration}
-                                        channelName={vid.owner.fullname}
-                                        channelAvatar={vid.owner.avatar}
-                                        description={vid.description}
-                                        className="h-full" // ensures card fills the grid cell
-                                    />
-                                ))}
                         </div>
-                        {!loading && userVideos.length === 0 && (
-                            <div className="text-center py-12 text-neutral-400">
-                                <Play className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                                <p>No videos uploaded yet</p>
+
+                        {/* Right: Stats */}
+                        <div className="flex gap-4">
+                            <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
+                                <span className="text-sm text-neutral-400 flex items-center gap-1">
+                                    <Play className="w-4 h-4 text-blue-400" /> Videos
+                                </span>
+                                <span className="text-lg font-bold text-white">
+                                    {userVideos?.length ?? 0}
+                                </span>
                             </div>
-                        )}
-                    </section>
-                </main>
+                            <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
+                                <span className="text-sm text-neutral-400 flex items-center gap-1">
+                                    <Eye className="w-4 h-4 text-yellow-500" /> Views
+                                </span>
+                                <span className="text-lg font-bold text-white">
+                                    {userData?.totalViews ?? 0}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                {/* Latest Videos */}
+                <section>
+                    <h2 className="text-2xl font-semibold mb-6">🎥 Latest Videos</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                        {userVideos?.map((vid) => (
+                            <VideoCard
+                                key={vid._id}
+                                videoId={vid._id}
+                                views={vid.views}
+                                title={vid.title}
+                                thumbnail={vid.thumbnail}
+                                timeAgo={vid.timeAgo}
+                                timestamps={vid.uploadDate}
+                                owner={vid.owner._id}
+                                duration={vid.duration}
+                                channelName={vid.owner.fullname}
+                                channelAvatar={vid.owner.avatar}
+                                description={vid.description}
+                                className="h-full"
+                            />
+                        ))}
+                    </div>
+
+                    {!loading && (userVideos?.length ?? 0) === 0 && (
+                        <div className="text-center py-12 text-neutral-400">
+                            <Play className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                            <p>No videos uploaded yet</p>
+                        </div>
+                    )}
+                </section>
             </div>
         </div>
     );
