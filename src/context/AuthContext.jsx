@@ -15,7 +15,6 @@ export const UserProvider = ({ children }) => {
             } catch (error) {
                 setAuthenticated(false);
                 setUser(null);
-
             }
             finally {
                 setLoading(false);
