@@ -29,7 +29,7 @@ const BillionTubeAbout = () => {
 
                             <div className="space-y-3 sm:space-y-4">
                                 <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
-                                    <span className="italic">BillionTube v1.0</span> BillionTube v1.0 is my first full MERN stack project - a video platform where I'm learning real-world development. I built it to practice user authentication, handle file uploads, and understand how everything works together.
+                                    <span className="italic">BillionTube v1.0</span> is my first full MERN stack project - a video platform where I'm learning real-world development. I built it to practice user authentication, handle file uploads, and understand how everything works together.
 
                                 </p>
 
