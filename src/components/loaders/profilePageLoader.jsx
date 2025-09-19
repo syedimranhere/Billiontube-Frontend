@@ -3,7 +3,7 @@ import React from 'react';
 const VideoPageLoader = () => {
     const videoCards = Array.from({ length: 3 }, (_, i) => i);
     return (
-        <div className="min-h-screen bg-black text-neutral-300">
+        <div className="min-h-screen bg-black text-neutral-300 pt-14 sm:pt-16">
 
             <div className="min-h-screen bg-black text-white">
                 <div className="p-3 sm:p-4 max-w-full">

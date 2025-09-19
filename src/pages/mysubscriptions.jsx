@@ -43,7 +43,7 @@ const Mysubscriptions = () => {
         );
     }
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
             {/* Header */}
             <div className="px-2 sm:px-3 md:px-4 py-3 sm:py-4 border-b border-neutral-800">
                 <div className="flex items-center justify-between">

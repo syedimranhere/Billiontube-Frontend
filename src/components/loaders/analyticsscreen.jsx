@@ -3,7 +3,7 @@ import { Users, Eye, Video, Heart } from 'lucide-react';
 
 const AnalyticsSkeleton = () => {
     return (
-        <div className=" bg-black text-white p-4">
+        <div className=" bg-black text-white p-4 pt-14 sm:pt-16">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="mb-10">

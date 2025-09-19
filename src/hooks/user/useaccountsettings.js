@@ -39,7 +39,7 @@ export const useAccountSettings = () => {
     try {
       setdeleting(true);
       await usersAPI.deleteAccount();
-      console.log("Account deleted");
+
       setShowConfirmDelete(false); // Close modal first
 
       setAuthenticated(false);

@@ -85,8 +85,8 @@ export const videosAPI = {
   getLikedStatus: async (videoId) => {
     try {
       const response = await api.get(`/likes/status/${videoId}`);
+
       return response.data;
-      k;
     } catch (error) {
       console.error("Error fetching like status:", error);
       throw error;

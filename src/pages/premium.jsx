@@ -32,7 +32,7 @@ export default function Pricing() {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-black px-6 py-16 font-['Inter']">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-black  pt-22 sm:pt-24">
             {/* Header */}
             <h1 className="text-4xl font-bold text-white itext-center mb-3">
                 Choose Your Plan

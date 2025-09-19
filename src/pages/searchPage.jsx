@@ -38,7 +38,7 @@ export const SearchPage = () => {
         )
     }
     return (
-        <div className="flex flex-col w-full  px-2 sm:px-4 lg:px-6 gap-y-2 mt-4 mb-8 min-h-screen">
+        <div className="flex flex-col w-full  px-2 sm:px-4 lg:px-6 gap-y-2 mt-4 mb-8 min-h-screen pt-14 sm:pt-16">
             {videos.length === 0 ? (
                 <div className="flex flex-col items-center justify-center flex-1 text-center min-h-[60vh]">
                     <SearchX className="w-14 h-14 text-gray-500 mb-4" />

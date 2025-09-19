@@ -85,7 +85,7 @@ const VideoCard = memo(
 
                     {/* 3-dot menu */}
                     <div
-                        className="absolute top-1 right-1 sm:top-2 sm:right-2 z-30"
+                        className="absolute top-1 right-1 sm:top-2 sm:right-2 z-20"
                         ref={menuRef}
                     >
                         <button

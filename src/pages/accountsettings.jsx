@@ -35,7 +35,7 @@ const AccountSettings = () => {
 
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-black pt-14 sm:pt-16">
             {
                 showConfirmDelete && (
                     <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">

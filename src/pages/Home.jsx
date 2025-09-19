@@ -33,19 +33,26 @@ const Home = () => {
 
     return (
 
-        <div className="p-6">
+        <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-6">
-                {Videos.map((vid) => (
-                    <VideoCard key={vid._id}
-                        videoId={vid._id}
-                        views={vid.views}
-                        title={vid.title}
-                        thumbnail={vid.thumbnail} timeAgo={vid.timeAgo}
-                        timestamps={vid.uploadDate}
-                        owner={vid.owner._id}
-                        duration={vid.duration} channelName={vid.owner.fullname} channelAvatar={vid.owner.avatar} description={vid.description} />
-                ))}
+            <div className="px-2 sm:px-3 md:px-4 py-3 sm:py-4">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
+                    {Videos.map((vid) => (
+                        <VideoCard key={vid._id}
+                            videoId={vid._id}
+                            views={vid.views}
+                            title={vid.title}
+                            thumbnail={vid.thumbnail}
+                            timeAgo={vid.timeAgo}
+                            timestamps={vid.uploadDate}
+                            owner={vid.owner._id}
+                            duration={vid.duration}
+                            channelName={vid.owner.fullname}
+                            channelAvatar={vid.owner.avatar}
+                            description={vid.description}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

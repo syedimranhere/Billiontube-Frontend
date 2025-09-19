@@ -21,10 +21,12 @@ import ProtectedRoute from './hooks/protectedRoute.jsx';
 import NotFoundPage from './pages/notfound.jsx';
 import { SearchPage } from './pages/searchPage.jsx';
 import TermsOfService from './pages/terms.jsx';
+import ScrollToTop from './utils/scrolltotop';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Public Routes */}

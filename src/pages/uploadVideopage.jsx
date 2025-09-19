@@ -24,7 +24,7 @@ const VideoUploadPage = () => {
     } = useUploadvideo();
 
     return (
-        <div className="min-h-screen bg-black text-white px-6 py-12 font-sans">
+        <div className="min-h-screen bg-black text-white px-6 py-12 font-sans pt-22 sm:pt-20">
             <div className="max-w-4xl mx-auto space-y-12">
                 {/* Header */}
                 <div>

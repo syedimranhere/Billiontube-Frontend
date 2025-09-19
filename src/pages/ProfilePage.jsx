@@ -3,6 +3,7 @@ import { User, Play, Eye, MapPin, Calendar } from 'lucide-react';
 import { useParams } from "react-router-dom";
 import { usersAPI } from '../services/usersservice';
 import { videosAPI } from '../services/videosservice';
+import { formatViews } from '../utils/timeago';
 import VideoCard from '../components/cards&buttons/videoCard';
 import ProfilePageLoader from '../components/loaders/profilePageLoader';
 const ProfilePage = () => {
@@ -51,7 +52,7 @@ const ProfilePage = () => {
         );
     }
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
             <div className="max-w-full mx-auto p-4 sm:p-6">
                 {/* Header */}
                 <section className="mb-6 border-b border-neutral-800 pb-6">
@@ -127,7 +128,7 @@ const ProfilePage = () => {
                                     <Eye className="w-4 h-4 text-yellow-500" /> Views
                                 </span>
                                 <span className="text-lg font-bold text-white">
-                                    {userData?.totalViews ?? 0}
+                                    {formatViews(userData?.totalViews ?? 0)}
                                 </span>
                             </div>
                         </div>

@@ -134,18 +134,15 @@ const Header = () => {
     return (
         <>
             <header
-                className="h-14 sm:h-16 
-            bg-black
-            backdrop-blur-3xl backdrop-saturate-150
-            border-b border-neutral-600/50 
-            flex items-center px-3 sm:px-4 
-            relative z-30 
-            before:absolute before:inset-x-0 before:bottom-0 
-            before:h-px before:bg-gradient-to-r before:from-transparent before:via-neutral-600/60 before:to-transparent
-            after:absolute after:inset-x-0 after:bottom-0 after:h-6
-            after:bg-gradient-to-t after:from-transparent after:via-neutral-900/20 after:to-neutral-900/5
-            after:pointer-events-none"
-            >
+
+                className="fixed top-0 left-0 right-0
+    h-14 sm:h-16 
+    bg-black
+    backdrop-blur-3xl backdrop-saturate-150
+    border-b border-neutral-600/50 
+    flex items-center px-3 sm:px-4 
+    z-30">
+
                 <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                         <div className="w-10 h-10 flex-shrink-0"></div>
@@ -168,11 +165,6 @@ const Header = () => {
                             />
                         </a>
                     </div>
-
-
-
-
-
 
                     {/* Desktop search bar - hidden on mobile */}
                     <div className="hidden lg:flex flex-1 max-w-md xl:max-w-xl mx-4 xl:mx-6">
@@ -341,13 +333,15 @@ const Header = () => {
                             </>
                         )}
                     </div>
-                </div>
-            </header>
+                </div >
+            </header >
 
             {/* Fullscreen Signout Loader */}
-            {signoutLoading && (
-                <SignoutLoader />
-            )}
+            {
+                signoutLoading && (
+                    <SignoutLoader />
+                )
+            }
         </>
     );
 };

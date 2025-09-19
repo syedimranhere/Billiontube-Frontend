@@ -66,7 +66,7 @@ const WatchHistory = () => {
     }
 
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
             {/* Clear History Modal */}
             {showClearModal && (
                 <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">

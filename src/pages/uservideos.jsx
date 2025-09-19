@@ -156,7 +156,7 @@ const VideoManagement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-black flex flex-col pt-14 sm:pt-16">
 
       {/* Delete Confirmation Modal */}
       {deleteConfirm && (

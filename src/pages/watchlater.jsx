@@ -65,7 +65,7 @@ export const WatchLaterPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-black pt-14 sm:pt-16">
             {removeConfirm && (
                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
                     <div className="bg-neutral-900 border border-gray-400 rounded-xl p-4 sm:p-6 max-w-md w-full">

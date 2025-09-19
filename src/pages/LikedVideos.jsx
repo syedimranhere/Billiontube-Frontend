@@ -25,7 +25,7 @@ const LikedVideos = () => {
     if (loading) return <SmoothSkeletonLoader />;
 
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
             <div className="px-2 sm:px-3 md:px-4 py-3 sm:py-4">
                 {/* Header Section */}
                 <div className="mb-3 sm:mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">

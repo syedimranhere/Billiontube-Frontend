@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeaderLoader = () => {
   return (
-    <header className="bg-neutral-900 border-b border-neutral-800 h-16 flex items-center justify-between px-6">
+    <header className="bg-neutral-900 border-b border-neutral-800 h-16 flex items-center justify-between px-6 ">
       {/* Left section - Menu and Logo */}
       <div className="flex items-center space-x-6">
         {/* Menu button skeleton */}

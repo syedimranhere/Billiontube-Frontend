@@ -6,30 +6,27 @@ import { Link } from "react-router-dom";
 import { UseUserContext } from "../context/AuthContext"
 import { useNotification } from "../context/notificationcontext";
 import { EarthLock } from 'lucide-react';
-import { usevideoData } from "../hooks/videos/useVideoData";
-import { useVideoInfo } from "../hooks/videos/usevideosinfo";
+import { useVideoData } from "../hooks/videos/useVideoData";
 import UseVideoControls from "../hooks/videos/usevideoscontrols";
-import { timeAgo, formatTime } from "../utils/timeago";
+import { timeAgo, formatTime, formatViews } from "../utils/timeago";
 import VideoPageLoader from "../components/loaders/videopageloader";
 const VideoPage = memo(() => {
     const { Authenticated } = UseUserContext();
     const { showNotification } = useNotification();
     const { videoId } = useParams();
 
-    const { videoData, loading: loadingVideoData, error } = usevideoData(videoId);
-    const {
-
+    const { videoData,
+        loading,
+        error,
+        likes,
         liked,
         disliked,
-        isSubscribed,
-        loading: loadingVideoInfo,
         subs,
-        likes,
+        isSubscribed,
         toggleLike,
         toggleDislike,
-        toggleSubscription,
-        fetchInteractionData,
-    } = useVideoInfo(videoId, videoData?.owner?._id);
+        toggleSubscription, } = useVideoData(videoId);
+
     const [suggestedVideos, setSuggestedVideos] = useState([]);
     const {
         videoRef,
@@ -39,7 +36,6 @@ const VideoPage = memo(() => {
         volume,
         isMuted,
         showControls,
-
         setIsPlaying,
         handleMouseEnter,
         handleMouseLeave,
@@ -53,14 +49,8 @@ const VideoPage = memo(() => {
     } = UseVideoControls();
 
 
-    useEffect(() => {
-        if (Authenticated && videoData?.owner?._id) {
-            fetchInteractionData();
-        }
 
-    }, [Authenticated, videoData?.owner?._id]);
-
-    if (loadingVideoData || loadingVideoInfo) {
+    if (loading) {
         return (
             <VideoPageLoader />
         );
@@ -80,7 +70,7 @@ const VideoPage = memo(() => {
     }
 
     return (
-        <div className="min-h-screen bg-neutral-950 text-white">
+        <div className="min-h-screen bg-neutral-950 text-white pt-14 sm:pt-16">
             <div className="mx-auto max-w-[1750px] px-4 sm:px-6 lg:px-8 py-4 grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_402px] gap-6">
 
                 <main className="min-w-0">
@@ -261,7 +251,7 @@ const VideoPage = memo(() => {
                         </div>
 
                         {/* Video info loading overlay - only show when video info is loading */}
-                        {loadingVideoInfo && (
+                        {loading && (
                             <div className="absolute inset-0 flex items-center justify-center bg-black/40">
                                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
                             </div>
@@ -349,7 +339,7 @@ const VideoPage = memo(() => {
                                                     d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
                                                 />
                                             </svg>
-                                            <span className="text-sm">{likes}</span>
+                                            <span className="text-sm">{formatViews(likes)}</span>
                                         </button>
 
                                         <div className="w-px h-6 bg-neutral-700" />
