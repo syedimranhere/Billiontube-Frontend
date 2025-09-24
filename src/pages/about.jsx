@@ -6,7 +6,7 @@ const BillionTubeAbout = () => {
         <div className="min-h-screen bg-black text-zinc-100 relative">
             {/* Background */}
             <div className="min-h-screen w-full relative">
-                {/* Azure Depths Background */}
+
                 <div
                     className="absolute inset-0 z-0"
                     style={{
@@ -14,7 +14,7 @@ const BillionTubeAbout = () => {
                     }}
                 />
 
-                {/* Back Button */}
+
                 <div className="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 relative z-10">
                     <button
                         onClick={() => window.history.back()}
