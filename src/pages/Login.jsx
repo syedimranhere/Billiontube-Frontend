@@ -17,14 +17,13 @@ export default function LoginPage() {
 
     return (
         <div className="relative min-h-screen bg-black overflow-hidden">
+
             <div
-                className="absolute inset-0 opacity-40"
+                className="absolute inset-0 z-0"
                 style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cpath fill='none' stroke='%2300f' stroke-width='7' d='M0 200 C200 100 600 300 800 200 S1400 100 1600 200'/%3E%3Cpath fill='none' stroke='%2300f' stroke-width='4' d='M0 400 C200 300 600 500 800 400 S1400 300 1600 400'/%3E%3Cpath fill='none' stroke='%2300f' stroke-width='0.5' d='M0 600 C200 500 600 700 800 600 S1400 500 1600 600'/%3E%3C/svg%3E")`,
-
+                    background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(120, 180, 255, 0.25), transparent 70%), #000000",
                 }}
-            ></div>
-
+            />
 
 
             <header className="absolute top-0 left-0 right-0 z-30 p-4 sm:p-6">
