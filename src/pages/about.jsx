@@ -10,10 +10,9 @@ const BillionTubeAbout = () => {
                 <div
                     className="absolute inset-0 z-0"
                     style={{
-                        background: "radial-gradient(125% 125% at 50% 100%, #000000 40%, #010133 100%)",
+                        background: "radial-gradient(125% 125% at 50% 10%, #000000 40%, #0d1a36 100%)",
                     }}
                 />
-
 
                 <div className="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 relative z-10">
                     <button
