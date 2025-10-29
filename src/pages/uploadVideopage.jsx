@@ -36,9 +36,9 @@ const VideoUploadPage = () => {
 
                 {/* Upload Box */}
                 <div
-                    className={`rounded-xl border-2 border-dashed p-12 text-center cursor-pointer transition-colors
-          ${dragOver ? "border-gray-400 bg-neutral-900" : "border-neutral-700 hover:border-gray-500"}
-          ${dragOver ? "border-gray-400 bg-neutral-900" : "border-neutral-700 hover:border-gray-500"}
+                    className={`rounded-sm border-2 border-dashed p-12 bg-gradient-to-br  from-indigo-900 via-black text-center cursor-pointer transition-colors
+          ${dragOver ? "border-gray-400 " : "border-neutral-700 hover:border-neutral-700"}
+          ${dragOver ? "border-gray-400 bg-neutral-900" : "border-neutral-700 hover:border-neutral-700"}
           ${uploading ? "opacity-50 pointer-events-none" : ""}
         `}
                     onDragOver={handleDragOver}
@@ -49,7 +49,7 @@ const VideoUploadPage = () => {
                     <div className="flex flex-col items-center justify-center">
                         <div
                             className={`w-20 h-20 flex items-center justify-center rounded-full mb-5 text-2xl font-bold
-              ${videoFile ? "bg-blue-600 text-black" : "bg-neutral-800 text-gray-300"}
+              ${videoFile ? "bg-indigo-900 text-black" : "bg-neutral-800 text-gray-300"}
             `}
                         >
                             {videoFile ? "✓" : "↑"}
@@ -84,7 +84,7 @@ const VideoUploadPage = () => {
                             value={formData.title}
                             onChange={handleInputChange}
                             placeholder="Enter video title"
-                            className="w-full p-4 rounded-lg bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-gray-400"
+                            className="w-full p-4 rounded-sm bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-700"
                         />
                     </div>
 
@@ -97,7 +97,7 @@ const VideoUploadPage = () => {
                             onChange={handleInputChange}
                             placeholder="Add a description..."
                             rows="4"
-                            className="w-full p-4 rounded-lg bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-gray-400"
+                            className="w-full p-4 rounded-sm bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-700"
                         />
                     </div>
 
@@ -110,7 +110,7 @@ const VideoUploadPage = () => {
                             value={formData.tags}
                             onChange={handleInputChange}
                             placeholder="e.g. tech, coding, ai"
-                            className="w-full p-4 rounded-lg bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-gray-400"
+                            className="w-full p-4 rounded-sm bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-700"
                         />
                     </div>
 
@@ -121,7 +121,7 @@ const VideoUploadPage = () => {
                             name="category"
                             value={formData.category}
                             onChange={handleInputChange}
-                            className="w-full p-4 rounded-lg bg-neutral-900 border border-neutral-700 text-white focus:outline-none focus:border-gray-400"
+                            className="w-full p-4 rounded-sm bg-neutral-900 border border-neutral-700 text-white focus:outline-none focus:border-indigo-700"
                         >
                             {categories.map((cat) => (
                                 <option key={cat.value} value={cat.value}>
@@ -143,15 +143,15 @@ const VideoUploadPage = () => {
                             className={`
       flex flex-col items-center justify-center 
       w-full sm:w-64 md:w-80 h-32 sm:h-40
-      border-2 border-dashed rounded-2xl 
+      border-2 border-dashed rounded-xs 
       cursor-pointer transition-all duration-200
       ${thumbnail
-                                    ? "border-gray-500 bg-neutral-900"
-                                    : "border-neutral-700 hover:border-gray-500 hover:bg-neutral-800"}
+                                    ? "border-neutral-500 bg-gradient-to-b transition-all duration-500 from-indigo-900 via-gray-900 "
+                                    : "border-neutral-700 bg-gradient-to-t from-indigo-900  via-gray-900 hover:border-gray-900 hover:bg-gradient-to-t "}
     `}
                         >
                             {thumbnail ? (
-                                <div className="flex flex-col items-center text-blue-600">
+                                <div className="flex flex-col items-center text-white">
                                     <CheckCircle className="h-8 w-8 mb-2" />
                                     <span className="text-sm">Thumbnail Selected</span>
                                 </div>
@@ -184,10 +184,10 @@ const VideoUploadPage = () => {
                             {visibilityOptions.map((option) => (
                                 <label
                                     key={option.value}
-                                    className={`flex items-center p-4 rounded-lg border cursor-pointer
+                                    className={`flex items-center p-4 rounded-sm border cursor-pointer
                   ${formData.visibility === option.value
-                                            ? "border-gray-400 bg-neutral-900"
-                                            : "border-neutral-700 hover:border-gray-500"}
+                                            ? "border-neutral-800 bg-gradient-to-br from-green-500 via-black to-green-900 transition-colors duration-500"
+                                            : "border-neutral-800 hover:border-neutral-600"}
                 `}
                                 >
                                     <input
@@ -211,10 +211,10 @@ const VideoUploadPage = () => {
                     <button
                         onClick={handleUpload}
                         disabled={uploading}
-                        className={`w-full py-4 rounded-lg text-white font-semibold
+                        className={`w-full py-4 rounded-sm text-white smooch-sans
             ${uploading
-                                ? "bg-neutral-700 cursor-not-allowed"
-                                : "bg-neutral-800 hover:bg-neutral-700"}
+                                ? " from-indigo-600 via-gray- cursor-not-allowed"
+                                : "bg-gradient-to-bl from-indigo-950 via-gray-900 hover:from-indigo-800  transition-colors "}
           `}
                     >
                         {uploading ? "Uploading..." : "Upload Video"}
@@ -224,16 +224,15 @@ const VideoUploadPage = () => {
 
             {/* basic loader */}
             {uploading && (
-                <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center z-50">
+                <div className="fixed inset-0 b  flex flex-col items-center justify-center z-50">
 
                     <div className="relative flex items-center justify-center">
-                        <div className="w-16 h-16 border-4 border-zinc-700 rounded-full animate-spin border-t-blue-500"></div>
-                        <span className="absolute w-8 h-8 bg-blue-500 rounded-full animate-pulse"></span>
+                        <span className="loader"></span>
                     </div>
 
 
-                    <p className="mt-6 text-xl font-semibold text-zinc-200 tracking-wide">
-                        Uploading your video - {formData.title}                    </p>
+                    <p className="mt-6 text-xl font-semibold smooch-sans text-zinc-200 tracking-wide">
+                        Uploading your video - {formData.title} </p>
 
                 </div>
 

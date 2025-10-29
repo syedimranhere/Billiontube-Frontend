@@ -67,9 +67,9 @@ const VideoCard = memo(
         }, [showMenu]);
 
         return (
-            <div className="w-full mb-3 sm:mb-4 md:mb-6">
+            <div className="w-full p-2 hover:bg-zinc-800 rounded-md">
                 {/* Thumbnail */}
-                <div className="relative w-full aspect-video bg-neutral-800 rounded-md sm:rounded-lg overflow-hidden cursor-pointer group">
+                <div className="relative w-full aspect-video bg-neutral-800 hover:opacity-70      rounded-sm overflow-hidden cursor-pointer group">
                     <a href={`/video/${videoId}`} className="block w-full h-full">
                         <img
                             src={thumbnail}
@@ -77,7 +77,7 @@ const VideoCard = memo(
                             className="w-full h-full object-cover object-center"
                             loading="lazy"
                         />
-                        {/* Duration Badge */}
+
                         <div className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-medium">
                             {duration}
                         </div>
@@ -100,13 +100,13 @@ const VideoCard = memo(
                             <>
                                 {/* Overlay */}
                                 <div
-                                    className="fixed inset-0 bg-black/40 z-40"
+                                    className="fixed  bg-black/40 "
                                     onClick={() => setShowMenu(false)}
                                 />
 
                                 {/* Desktop dropdown */}
-                                <div className="hidden sm:block absolute top-full right-0 mt-1 
-                  bg-neutral-900 rounded-lg shadow-xl py-2 
+                                <div className="hidden sm:block absolute top-5 right-2
+                  bg-neutral-900 rounded-lg shadow-xl  
                   w-40 md:w-48 z-50 border border-neutral-700">
                                     <button
                                         onClick={() => handleMenuAction("watchLater")}
@@ -164,10 +164,10 @@ const VideoCard = memo(
                 </div>
 
                 {/* Video Details */}
-                <div className="flex gap-2 sm:gap-3 mt-2 sm:mt-3">
+                <div className="flex gap-2 sm:gap-3 mt-2 sm:mt-3 ">
                     {/* Avatar */}
                     {channelAvatar && (
-                        <Link to={`/user-profile/${owner}`} className="flex-shrink-0">
+                        <Link to={`/user-profile/${owner}`} className="flex-shrink-0 ">
                             <img
                                 src={channelAvatar}
                                 alt={channelName}
@@ -180,12 +180,12 @@ const VideoCard = memo(
                     {/* Video Details */}
                     <div className="flex-1 min-w-0">
                         <a href={`/video/${videoId}`} className="block">
-                            <h3 className="text-white text-xs sm:text-sm md:text-base font-medium leading-tight line-clamp-2 mb-0.5 sm:mb-1 hover:text-neutral-200 transition-colors">
+                            <h3 className="text-white text-xs sm:text-sm md:text-base font-medium leading-tight line-clamp-2 mb-0.5 sm:mb-1 hover:text-neutral-200 hover:underline transition-colors">
                                 {title}
                             </h3>
                         </a>
                         <Link to={`/user-profile/${owner}`}>
-                            <p className="text-neutral-400 text-xs sm:text-sm mb-0.5 hover:text-neutral-300 transition-colors truncate">
+                            <p className="text-neutral-400 text-xs sm:text-sm mb-0.5 hover:underline hover:text-neutral-300 transition-colors ">
                                 {channelName}
                             </p>
                         </Link>

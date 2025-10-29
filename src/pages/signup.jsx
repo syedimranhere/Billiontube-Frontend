@@ -1,8 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '../components/cards&buttons/button';
 import { useRegister } from '../hooks/user/useRegister';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
-
+import Button from '../components/cards&buttons/button';
 export default function SignupPage() {
   const {
     formData,
@@ -31,7 +30,7 @@ export default function SignupPage() {
 
 
 
-      <header className="absolute top-0 left-0 right-0 z-30 p-4 sm:p-6">
+      <header className="absolute top-0 left-0 right-0 z-30 p-6  sm:p-6">
         <Link
           to="/"
           aria-label="Go to BillionTube homepage"
@@ -45,7 +44,7 @@ export default function SignupPage() {
           />
 
           {/* Brand Name */}
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight hover:text-gray-200 transition-colors">
+          <h1 className="michroma-regular text-xl sm:text-2xl md:text-3xl font-bold  text-white tracking-tight hover:text-gray-200 transition-colors">
             BillionTube
           </h1>
         </Link>
@@ -53,22 +52,22 @@ export default function SignupPage() {
 
 
       {/* Main Content */}
-      <div className="relative z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 pt-16 sm:pt-20 pb-8">
+      <div className="relative mt-7  z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 pt-16 sm:pt-20 pb-8">
         <div className="w-full max-w-lg lg:max-w-2xl">
           {/* Compact Card Container */}
-          <div className="bg-neutral-900/95 backdrop-blur-xl border opacity-85 border-neutral-800/80 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+          <div className="bg-neutral-900/95 backdrop-blur-xl border opacity-85 border-neutral-800/80 rounded-md  p-6 sm:p-8 shadow-2xl relative">
             <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-transparent rounded-xl sm:rounded-2xl pointer-events-none"></div>
 
             <div className="relative z-10">
               {/* Header Section */}
-              <div className="text-center space-y-4 mb-6">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              <div className="text-center smooch-sans space-y-4 mb-6">
+                <h2 className="text-2xl smooch-sans sm:text-3xl font-bold text-white tracking-tight">
                   Create your account
                 </h2>
                 <p className="text-neutral-400 text-sm sm:text-base">
                   Already have an account?{' '}
                   <button
-                    className="text-white hover:underline font-medium"
+                    className="text-white  hover:underline smooch-sans"
                     onClick={() => navigate('/login')}
                   >
                     Sign in
@@ -77,7 +76,7 @@ export default function SignupPage() {
               </div>
 
               {/* Signup Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 ">
                 {/* Name and Username Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
@@ -87,7 +86,7 @@ export default function SignupPage() {
                       name="fullname"
                       value={formData.fullname}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 text-sm"
+                      className="w-full px-3 py-2.5 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-700  focus:ring-neutral-800  transition-all text-sm"
                       required
                     />
                   </div>
@@ -98,7 +97,7 @@ export default function SignupPage() {
                       name="username"
                       value={formData.username}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 text-sm"
+                      className="w-full px-3 py-2.5 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-900 focus:ring-1 focus:ring-neutral-800 transition-all  text-sm"
                       required
                     />
                   </div>
@@ -113,7 +112,7 @@ export default function SignupPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 text-sm"
+                      className="w-full px-3 py-2.5 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-700 focus:ring-1 focus:ring-neutral-800   transition-all text-sm"
                       required
                     />
                   </div>
@@ -125,7 +124,7 @@ export default function SignupPage() {
                         name="password"
                         value={formData.password}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 pr-10 text-sm"
+                        className="w-full px-3 py-2.5 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-700 focus:ring-1 focus:ring-neutral-800   transition-all hover:bg-neutral-800 pr-10 text-sm"
                         required
                       />
                       <button
@@ -134,9 +133,9 @@ export default function SignupPage() {
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-white transition-colors"
                       >
                         {showPassword ? (
-                          <Eye className="w-4 h-4" />
+                          <Eye className="w-4 text-indigo-900 h-4" />
                         ) : (
-                          <EyeOff className="w-4 h-4" />
+                          <EyeOff className="w-4 text-indigo-300 h-4" />
                         )}
                       </button>
                     </div>
@@ -151,7 +150,7 @@ export default function SignupPage() {
                       name="gender"
                       value={formData.gender}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 cursor-pointer text-sm"
+                      className="w-full px-3 py-2.5 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white focus:outline-none focus:border-indigo-700 focus:ring-1 focus:ring-neutral-800   hover:bg-neutral-800 cursor-pointer text-sm"
                       required
                     >
                       <option value="" disabled>Select gender</option>
@@ -166,7 +165,7 @@ export default function SignupPage() {
                       name="country"
                       value={formData.country}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 cursor-pointer text-sm"
+                      className="w-full px-3 py-2.5 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white focus:outline-none focus:border-indigo-700 focus:ring-1 focus:ring-neutral-800   transition-all hover:bg-neutral-800 cursor-pointer text-sm"
                       required
                     >
                       <option value="" disabled>Select country</option>
@@ -185,7 +184,7 @@ export default function SignupPage() {
                     name="avatar"
                     accept="image/*"
                     onChange={handleFileChange}
-                    className="w-full px-3 py-2.5 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white file:mr-3 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-medium file:bg-neutral-700 file:text-white hover:file:bg-neutral-600 file:cursor-pointer cursor-pointer focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 text-sm"
+                    className="w-full px-3 py-2.5 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-xs text-white file:mr-3 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-medium file:bg-neutral-700 file:text-white hover:file:bg-neutral-600 file:cursor-pointer cursor-pointer focus:outline-none focus:border-indigo-700 focus:ring-1 focus:ring-neutral-800   transition-all hover:bg-neutral-800 text-sm"
 
                   />
                 </div>
@@ -198,11 +197,9 @@ export default function SignupPage() {
                 )}
 
                 {/* Submit Button */}
-                <div className="pt-2">
+                <div className="pt-2 smooch-sans">
                   <Button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full py-2.5 text-sm font-medium flex items-center justify-center gap-2"
+
                   >
                     {loading ? (
                       <>
@@ -217,12 +214,6 @@ export default function SignupPage() {
 
               </form>
 
-              {/* Terms notice for mobile */}
-              <div className="text-center mt-4 sm:hidden">
-                <p className="text-neutral-500 text-xs">
-                  By creating an account, you agree to our terms
-                </p>
-              </div>
             </div>
           </div>
         </div>

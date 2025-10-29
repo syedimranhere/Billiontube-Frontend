@@ -53,14 +53,21 @@ export default function TermsOfService() {
         },
     ]
     return (
-        <div className="bg-black text-gray-300 min-h-screen">
+        <div className="bg-black smooch-sans text-gray-300 min-h-screen">
             {/* Back Button */}
             <div className="px-4 sm:px-6 lg:px-8 pt-6">
                 <button
                     onClick={() => window.history.back()}
-                    className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-md transition-all text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="inline-flex items-center px-4 sm:px-5 py-2 
+          bg-gradient-to-l to-indigo-950 
+          hover:bg-gradient-to-r hover:to-indigo-950 
+          text-white font-semibold rounded-sm shadow-md 
+          transition-[background-position,background-color,transform] duration-700 ease-in-out 
+          bg-[length:200%_200%] bg-[position:100%_0] hover:bg-[position:0_0] 
+          text-sm sm:text-base focus:outline-none focus:ring-2 
+          will-change-transform will-change-background-position"
                 >
-                    ← Back
+                    Go Back
                 </button>
             </div>
 
@@ -87,7 +94,7 @@ export default function TermsOfService() {
                 <div className="space-y-8 sm:space-y-12">
                     {terms.map((section, idx) => (
                         <section key={idx}>
-                            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 border-b border-gray-800 pb-1 sm:pb-2">
+                            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 border-b border-gray-300 pb-1 sm:pb-2">
                                 {section.title}
                             </h2>
                             <ul className="space-y-2 sm:space-y-3 list-disc list-inside ml-4 text-base sm:text-lg">
@@ -100,7 +107,7 @@ export default function TermsOfService() {
 
 
                     <section>
-                        <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 border-b border-gray-800 pb-1 sm:pb-2">
+                        <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 border-b border-gray-300 pb-1 sm:pb-2">
                             7. Contact
                         </h2>
                         <p className="leading-relaxed text-base sm:text-lg">
@@ -114,8 +121,8 @@ export default function TermsOfService() {
                 </div>
 
                 {/* Footer Note */}
-                <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-800 text-center">
-                    <p className="text-gray-500 text-sm sm:text-base">
+                <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-300 text-center">
+                    <p className="text-gray-400 italic underline text-sm sm:text-base">
                         Thank you for being part of the BillionTube journey.
                     </p>
                 </div>

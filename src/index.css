@@ -8,10 +8,102 @@
 
     100% {
         opacity: 1;
-        transform: scale(1.05);
+        transform: scale(2);
     }
 }
 
-.animate-profileMenu {
-    animation: profileMenu 0.1s ease-in forwards;
+
+
+.michroma-regular {
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.smooch-sans {
+    font-family: sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.icon-rotate {
+    transition: transform 0.6s ease-in-out;
+}
+
+@keyframes rotate-once {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate-on-hover {
+    transition: transform 0.5s ease-in-out;
+}
+
+.rotate-on-hover:hover {
+    animation: rotate-once 0.6s ease-in-out forwards;
+}
+
+.cormorant-garamond {
+    font-family: "Cormorant Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.instrument-serif-regular {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.loader {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#FFF 50px, transparent 0),
+        linear-gradient(#FFF 50px, transparent 0),
+        linear-gradient(#FFF 50px, transparent 0),
+        linear-gradient(#FFF 50px, transparent 0),
+        linear-gradient(#FFF 50px, transparent 0),
+        linear-gradient(#FFF 50px, transparent 0);
+    background-size: 5px 40px;
+    background-position: 0px center, 10px center, 20px center, 30px center, 40px center, 50px center;
+    animation: spikeUp 1s linear infinite alternate;
+}
+
+@keyframes spikeUp {
+    0% {
+        background-size: 5px 40px
+    }
+
+    16% {
+        background-size: 5px 55px, 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 40px
+    }
+
+    33% {
+        background-size: 5px 40px, 5px 55px, 5px 40px, 5px 40px, 5px 40px, 5px 40px
+    }
+
+    50% {
+        background-size: 5px 40px, 5px 40px, 5px 55px, 5px 40px, 5px 40px, 5px 40px
+    }
+
+    66% {
+        background-size: 5px 40px, 5px 40px, 5px 40px, 5px 55px, 5px 40px, 5px 40px
+    }
+
+    83% {
+        background-size: 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 55px, 5px 40px
+    }
+
+    100% {
+        background-size: 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 40px, 5px 55px
+    }
 }

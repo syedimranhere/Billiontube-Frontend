@@ -113,8 +113,8 @@ export default function CommentsSection({ videoId }) {
                                         <button
                                             type="submit"
                                             disabled={!newComment.trim() || submitting}
-                                            className="px-5 py-2 text-sm font-medium bg-red-600 text-white 
-                                           rounded-full hover:bg-red-700 disabled:opacity-50 
+                                            className="px-5 py-2 text-sm font-medium bg-blue-600 text-white 
+                                           rounded-full hover:bg-blue-700 disabled:opacity-50 
                                            disabled:cursor-not-allowed transition"
                                         >
                                             {submitting ? "Posting..." : "Comment"}

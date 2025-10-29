@@ -66,9 +66,9 @@ export const VideoCard4 = memo(
         }, [showMenu]);
 
         return (
-            <div className="w-full flex gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-5 md:mb-6">
+            <div className="w-full flex gap-2 sm:gap-4 md:gap-4  sm:mb-5 md:mb-6">
                 {/* Thumbnail */}
-                <div className="relative flex-shrink-0 w-40 sm:w-52 md:w-64 lg:w-72 aspect-video bg-neutral-800 rounded-md sm:rounded-lg overflow-hidden cursor-pointer group">
+                <div className="relative flex-shrink-0 w-40 sm:w-52 md:w-64 hover:opacity-55 lg:w-72 aspect-video bg-neutral-800 rounded-md sm:rounded-lg overflow-hidden cursor-pointer group">
                     <a href={`/video/${videoId}`} className="block w-full h-full">
                         <img
                             src={thumbnail}
@@ -83,7 +83,7 @@ export const VideoCard4 = memo(
                     </a>
 
                     {/* 3-dot menu trigger */}
-                    <div className="absolute top-1 right-1 sm:top-2 sm:right-2 z-30" ref={menuRef}>
+                    <div className="absolute top-1 right-1 sm:top-2 sm:right-2 z-1000" ref={menuRef}>
                         <button
                             onClick={toggleMenu}
                             className="bg-black/70 text-white p-1 sm:p-1.5 rounded-full hover:bg-black/80 transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100 flex items-center justify-center"
@@ -96,14 +96,14 @@ export const VideoCard4 = memo(
                             <>
                                 {/* Overlay */}
                                 <div
-                                    className="fixed inset-0 bg-black/40 "
+                                    className="fixed inset bg-black/40 "
                                     onClick={() => setShowMenu(false)}
                                 />
 
                                 {/* Desktop dropdown */}
-                                <div className="hidden sm:block absolute top-full right-0 mt-1 
-                  bg-neutral-900 rounded-lg shadow-xl py-2 
-                  w-40 md:w-48 border border-neutral-700">
+                                <div className="hidden sm:block absolute top-5 right-2
+                  bg-neutral-900 rounded-lg shadow-xl  
+                  w-40 md:w-48 z-50 border border-neutral-700">
                                     <button
                                         onClick={() => handleMenuAction("watchLater")}
                                         className="flex items-center gap-2 w-full px-3 py-2 text-sm text-white hover:bg-neutral-800"
@@ -162,7 +162,7 @@ export const VideoCard4 = memo(
                 {/* Video Info */}
                 <div className="flex-1 min-w-0">
                     <a href={`/video/${videoId}`} className="block">
-                        <h3 className="text-white text-sm sm:text-base md:text-lg font-medium leading-snug line-clamp-2 hover:text-neutral-200 transition-colors">
+                        <h3 className="text-white text-sm sm:text-base md:text-lg font-medium leading-snug hover:underline line-clamp-2 hover:text-neutral-200 transition-colors">
                             {title}
                         </h3>
                     </a>

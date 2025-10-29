@@ -1,8 +1,7 @@
 import { Loader2, Eye, EyeOff } from 'lucide-react';
-import { Button } from '../components/cards&buttons/button';
 import { useLogin } from '../hooks/user/useLogin';
 import { Link, useNavigate } from 'react-router-dom';
-
+import Button from '../components/cards&buttons/button';
 export default function LoginPage() {
     const {
         formData,
@@ -40,7 +39,7 @@ export default function LoginPage() {
                     />
 
                     {/* Brand Name */}
-                    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight hover:text-gray-200 transition-colors">
+                    <h1 className="michroma-regular text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight hover:text-gray-200 transition-colors">
                         BillionTube
                     </h1>
                 </Link>
@@ -52,14 +51,14 @@ export default function LoginPage() {
             <main className="relative z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 pt-16 sm:pt-20">
                 <div className="w-full max-w-md sm:max-w-lg">
                     {/* Compact Login Card */}
-                    <div className="bg-neutral-900/95 backdrop-blur-xl opacity-90 border border-neutral-800/80 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                    <div className="bg-neutral-900/95 backdrop-blur-3xl opacity-85 border border-neutral-800/80 rounded-md p-6 sm:p-8 shadow-3xl relative">
                         {/* Subtle gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-transparent rounded-xl sm:rounded-2xl pointer-events-none"></div>
 
                         <div className="relative z-10">
                             {/* Header Section */}
-                            <div className="text-center space-y-4 mb-8">
-                                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                            <div className="text-center smooch-sans space-y-4 mb-8">
+                                <h2 className="text-2xl sm:text-3xl  text-white tracking-tight">
                                     Welcome back
                                 </h2>
                                 <p className="text-neutral-400 text-sm sm:text-base">
@@ -92,7 +91,7 @@ export default function LoginPage() {
                                         name="email"
                                         value={formData.email}
                                         onChange={handleInputChange}
-                                        className="w-full px-4 py-3 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 text-base"
+                                        className="w-full px-4 py-3 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-700 focus:ring-1 focus:ring-neutral-800 transition-all  text-base"
                                         placeholder="Enter your email or username"
                                         required
                                     />
@@ -112,7 +111,7 @@ export default function LoginPage() {
                                             name="password"
                                             value={formData.password}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 bg-neutral-800/80 backdrop-blur border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all hover:bg-neutral-800 pr-12 text-base"
+                                            className="w-full px-4 py-3 bg-neutral-900/80 backdrop-blur border border-neutral-700 rounded-sm text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-700 focus:ring-1 focus:ring-neutral-800 transition-all pr-12 text-base"
                                             placeholder="Enter your password"
                                             required
                                         />
@@ -135,7 +134,7 @@ export default function LoginPage() {
                                 {error && (
                                     <div
                                         role="alert"
-                                        className="bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3"
+                                        className="bg-red-500/10 border border-red-500/20 rounded-sm  px-4 py-3"
                                     >
                                         <p className="text-red-400 text-sm">{error}</p>
                                     </div>
@@ -143,13 +142,12 @@ export default function LoginPage() {
 
                                 {/* Login Button / Loader */}
                                 {loggingIn ? (
-                                    <div className="flex justify-center py-2">
+                                    <div className="flex justify-center  py-2">
                                         <Loader2 className="h-8 w-8 text-white animate-spin" />
                                     </div>
                                 ) : (
                                     <Button
-                                        type="submit"
-                                        className="w-full py-3 text-base font-medium"
+
                                     >
                                         Sign In
                                     </Button>
@@ -159,12 +157,7 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    {/* Optional: Additional info for mobile */}
-                    <div className="text-center mt-6 sm:hidden">
-                        <p className="text-neutral-500 text-xs">
-                            By signing in, you agree to our terms of service
-                        </p>
-                    </div>
+
                 </div>
             </main>
         </div>

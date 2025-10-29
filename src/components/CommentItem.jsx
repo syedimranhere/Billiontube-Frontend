@@ -49,7 +49,7 @@ export default function CommentItem({ comment = {}, onUpdate, onDelete, user }) 
 
     return (
 
-        <div className="flex space-x-4 bg-neutral-900 p-4 rounded-xl hover:bg-neutral-800/80 transition-colors">
+        <div className="flex space-x-4 durationm  bg-gradient-to-tl from-indigo-900/20 hover:to-indigo-900/10  p-4 rounded-xl  transition-colors duration-400">
             {/* Profile Picture */}
             <Link to={`/user-profile/${comment?.owner}`}>
                 <img

@@ -2,18 +2,14 @@ import { Camera, Edit3, Lock, User, Save, X } from 'lucide-react';
 import { timeAgo } from "../utils/timeago.js";
 import { Loader2 } from 'lucide-react';
 import { useAccountSettings } from "../hooks/user/useaccountsettings.js";
-import { Trash2 } from 'lucide-react';
+import { Trash2, Skull } from 'lucide-react';
 
 const AccountSettings = () => {
     const {
         pfploading,
-        setpfploading,
         settingit,
-        setsettingit,
         userInfo,
-        setUserInfo,
         error,
-        seterror,
         formData,
         setFormData,
         editMode,
@@ -29,7 +25,6 @@ const AccountSettings = () => {
         setShowConfirmDelete,
         user,
         deleting,
-
         handleDelete,
     } = useAccountSettings();
 
@@ -38,12 +33,12 @@ const AccountSettings = () => {
         <div className="min-h-screen bg-black pt-14 sm:pt-16">
             {
                 showConfirmDelete && (
-                    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-                        <div className="bg-neutral-900 rounded-lg border border-neutral-700 p-4 sm:p-6 max-w-sm sm:max-w-md w-full">
+                    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-2">
+                        <div className="bg-black rounded-xs  border-2 border-neutral-800 p-2 sm:p-6 max-w-sm sm:max-w-md w-full">
                             {/* Header */}
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="w-8 h-8 bg-red-600/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <Trash2 className="text-red-500 w-5 h-5" />
+                                <div className="w-8 h-8 bg-red-700/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <Trash2 className="text-red-400 w-5 h-5" />
                                 </div>
                                 <h2 className="text-lg font-semibold text-white">Delete Account</h2>
                             </div>
@@ -63,14 +58,14 @@ const AccountSettings = () => {
                                 <button
                                     onClick={() => setShowConfirmDelete(false)}
 
-                                    className="flex-1 px-4 py-2 text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors border border-gray-700 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="flex-1 px-4 py-2 text-neutral-300 hover:text-white bg-neutral-600 hover:bg-neutral-800 rounded-sm transition-colors border-3 border-black text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleDelete}
 
-                                    className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium text-sm flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="flex-1 px-4 py-2 bg-red-900 hover:border text-white rounded-sm transition-colors font-medium text-sm flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {deleting ? (
                                         <Loader2 className="h-4 w-4 animate-spin" />
@@ -98,13 +93,13 @@ const AccountSettings = () => {
 
                 {/* Profile Picture Section */}
                 <section
-                    className="bg-black rounded-lg sm:rounded-xl border border-gray-700/50 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8"
+                    className=" bg-gradient-to-br  to-indigo-950 rounded-sm sm:rounded-md  p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8"
                     aria-labelledby="profile-picture-heading"
                 >
                     <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
                         <div className="relative group flex-shrink-0">
                             {pfploading ? (
-                                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-neutral-800 flex items-center justify-center">
+                                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-md bg-neutral-800 flex items-center justify-center">
                                     <Loader2 className="h-8 w-8 sm:h-12 sm:w-12 text-white animate-spin" />
                                 </div>
                             ) : (
@@ -153,7 +148,7 @@ const AccountSettings = () => {
                             <h2 id="profile-picture-heading" className="text-base sm:text-lg font-semibold text-white mb-1">
                                 Profile Picture
                             </h2>
-                            <p className="text-gray-400 text-xs sm:text-sm">
+                            <p className="text-gray-200 text-xs sm:text-sm">
                                 Click to change your profile picture
                             </p>
                         </div>
@@ -162,7 +157,7 @@ const AccountSettings = () => {
 
                 {/* Username Section */}
                 <section
-                    className="bg-black rounded-lg sm:rounded-xl border border-neutral-700/50 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8"
+                    className="bg-black rounded-sm sm:rounded-sm border-2 border-neutral-500 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8"
                     aria-labelledby="username-heading"
                 >
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
@@ -172,7 +167,7 @@ const AccountSettings = () => {
                         {!editMode.username && (
                             <button
                                 onClick={() => setEditMode((prev) => ({ ...prev, username: true }))}
-                                className="px-3 sm:px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-white text-sm rounded-lg transition-colors flex items-center space-x-2 self-start sm:self-auto"
+                                className="px-3 sm:px-4 py-2  bg-indigo-900 hover:bg-indigo-700 text-white text-sm rounded-xs transition-colors flex items-center space-x-2 self-start sm:self-auto"
                             >
                                 <Edit3 className="w-4 h-4" />
                                 <span className="hidden sm:inline">Change Username</span>
@@ -204,7 +199,7 @@ const AccountSettings = () => {
                         <form onSubmit={(e) => { e.preventDefault(); handleUsernameSubmit(); }}>
                             <div className="space-y-4 sm:space-y-6">
                                 <div>
-                                    <label htmlFor="username-input" className="block text-sm font-medium text-gray-400 mb-2">
+                                    <label htmlFor="username-input" className="block text-sm font-medium text-gray-200 mb-2">
                                         Username
                                     </label>
                                     <input
@@ -214,17 +209,18 @@ const AccountSettings = () => {
                                         onChange={(e) =>
                                             setFormData((prev) => ({ ...prev, username: e.target.value }))
                                         }
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors text-sm sm:text-base"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border-2 border-neutral-900 rounded-sm text-white focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-gray-800 transition-colors text-sm sm:text-base"
                                         required
                                         minLength="3"
                                         maxLength="30"
                                     />
+
                                 </div>
                                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                                     <button
                                         type="submit"
                                         disabled={settingit}
-                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2 font-medium text-sm sm:text-base"
+                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-xs hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2 font-medium text-sm sm:text-base"
                                     >
                                         {settingit ? (
                                             <Loader2 className="h-4 w-4 animate-spin text-black" />
@@ -238,7 +234,7 @@ const AccountSettings = () => {
                                     <button
                                         type="button"
                                         onClick={() => handleCancel("username")}
-                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-neutral-800 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
+                                        className="w-full sm:w-auto px-4 sm:px-6 py-1 sm:py-3 hover:bg-blue-600 bg-blue-800 text-white rounded-xs hover:bg-gray-00 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
                                     >
                                         <X className="w-4 h-4" />
                                         <span>Cancel</span>
@@ -251,7 +247,7 @@ const AccountSettings = () => {
 
                 {/* Full Name Section */}
                 <section
-                    className="bg-black rounded-lg sm:rounded-xl border border-gray-700/50 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8"
+                    className="bg-black rounded-xs sm:rounded-sm border-2 border-neutral-500 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8"
                     aria-labelledby="fullname-heading"
                 >
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
@@ -261,7 +257,7 @@ const AccountSettings = () => {
                         {!editMode.fullname && (
                             <button
                                 onClick={() => setEditMode((prev) => ({ ...prev, fullname: true }))}
-                                className="px-3 sm:px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-white text-sm rounded-lg transition-colors flex items-center space-x-2 self-start sm:self-auto"
+                                className="px-3 sm:px-4 py-2  bg-indigo-900 hover:bg-indigo-700 text-white text-sm rounded-xs transition-colors flex items-center space-x-2 self-start sm:self-auto"
                             >
                                 <User className="w-4 h-4" />
                                 <span className="hidden sm:inline">Change Full Name</span>
@@ -293,7 +289,7 @@ const AccountSettings = () => {
                                         onChange={(e) =>
                                             setFormData((prev) => ({ ...prev, fullname: e.target.value }))
                                         }
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors text-sm sm:text-base"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border-2 border-neutral-900 rounded-sm text-white focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-gray-800 transition-colors text-sm sm:text-base"
                                         required
                                         minLength="2"
                                         maxLength="50"
@@ -303,7 +299,7 @@ const AccountSettings = () => {
                                     <button
                                         type="submit"
                                         disabled={settingit}
-                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2 font-medium text-sm sm:text-base"
+                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-sm hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2 font-medium text-sm sm:text-base"
                                     >
                                         {settingit ? (
                                             <Loader2 className="h-4 w-4 animate-spin text-black" />
@@ -317,7 +313,7 @@ const AccountSettings = () => {
                                     <button
                                         type="button"
                                         onClick={() => handleCancel("fullname")}
-                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-neutral-800 text-white rounded-lg hover:bg-neutral-700 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
+                                        className="w-full sm:w-auto px-4 sm:px-6 py-1 sm:py-3 hover:bg-blue-600 bg-blue-800 text-white rounded-xs hover:bg-gray-00 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
                                     >
                                         <X className="w-4 h-4" />
                                         <span>Cancel</span>
@@ -330,7 +326,7 @@ const AccountSettings = () => {
 
                 {/* Change Password Section */}
                 <section
-                    className="bg-black rounded-lg sm:rounded-xl border border-neutral-700/50 p-4 sm:p-6 lg:p-8"
+                    className="bg-black rounded-sm sm:rounded-md border border-neutral-100/50 p-4 sm:p-6 lg:p-8"
                     aria-labelledby="password-heading"
                 >
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
@@ -340,7 +336,7 @@ const AccountSettings = () => {
                         {!editMode.password && (
                             <button
                                 onClick={() => setEditMode((prev) => ({ ...prev, password: true }))}
-                                className="px-3 sm:px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-white text-sm rounded-lg transition-colors flex items-center space-x-2 self-start sm:self-auto"
+                                className="px-3 sm:px-4 py-2  bg-indigo-900 hover:bg-indigo-700 text-white text-sm rounded-xs transition-colors flex items-center space-x-2 self-start sm:self-auto"
                             >
                                 <Lock className="w-4 h-4" />
                                 <span className="hidden sm:inline">Change Password</span>
@@ -370,7 +366,7 @@ const AccountSettings = () => {
                                         onChange={(e) =>
                                             setFormData((prev) => ({ ...prev, currentPassword: e.target.value }))
                                         }
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors text-sm sm:text-base"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border-2 border-neutral-900 rounded-sm text-white focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-gray-800 transition-colors text-sm sm:text-base"
                                         required
                                         autoComplete="current-password"
                                     />
@@ -386,7 +382,7 @@ const AccountSettings = () => {
                                         onChange={(e) =>
                                             setFormData((prev) => ({ ...prev, newPassword: e.target.value }))
                                         }
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors text-sm sm:text-base"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border-2 border-neutral-900 rounded-sm text-white focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-gray-800 transition-colors text-sm sm:text-base"
                                         required
                                         minLength="8"
                                         autoComplete="new-password"
@@ -403,7 +399,7 @@ const AccountSettings = () => {
                                         onChange={(e) =>
                                             setFormData((prev) => ({ ...prev, confirmPassword: e.target.value }))
                                         }
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors text-sm sm:text-base"
+                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border-2 border-neutral-900 rounded-sm text-white focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-gray-800 transition-colors text-sm sm:text-base"
                                         required
                                         autoComplete="new-password"
                                     />
@@ -411,7 +407,7 @@ const AccountSettings = () => {
 
                                 {/* Error message */}
                                 {error && (
-                                    <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                                    <div className="bg-red-500/10 border border-red-500/20 rounded-sm p-3">
                                         <p className="text-red-400 text-sm font-medium" role="alert">
                                             {error}
                                         </p>
@@ -422,7 +418,7 @@ const AccountSettings = () => {
                                     <button
                                         type="submit"
                                         disabled={settingit}
-                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2 font-medium text-sm sm:text-base"
+                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-xs  hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2 font-medium text-sm sm:text-base"
                                     >
                                         {settingit ? (
                                             <Loader2 className="h-4 w-4 animate-spin text-black" />
@@ -436,7 +432,7 @@ const AccountSettings = () => {
                                     <button
                                         type="button"
                                         onClick={() => handleCancel("password")}
-                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
+                                        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-blue-800 text-white rounded-xs hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
                                     >
                                         <X className="w-4 h-4" />
                                         <span>Cancel</span>
@@ -449,38 +445,43 @@ const AccountSettings = () => {
 
                 {/* Danger Zone Section */}
                 <section
-                    className="bg-black rounded-lg sm:rounded-xl border border-red-500/30 p-4 sm:p-6 lg:p-8 mt-8"
+                    className="bg-gradient-to-tr  to-red-800 rounded-sm sm:rounded-lg border-red-500/30 p-4 sm:p-6 lg:p-8 mt-8"
                     aria-labelledby="danger-zone-heading"
                 >
                     <h2
                         id="danger-zone-heading"
-                        className="text-lg sm:text-xl font-semibold text-red-400 mb-4"
+                        className="text-lg sm:text-xl font-semibold text-neutral-300 mb-4"
                     >
                         Danger Zone
                     </h2>
 
-                    <p className="text-sm text-neutral-400 mb-4">
+                    <p className="text-sm text-neutral-200 mb-4">
                         Once you delete your account, there is no going back. Please be certain.
                     </p>
-
                     <div className="flex justify-center">
                         <button
                             type="button"
                             onClick={() => setShowConfirmDelete(true)}
-                            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 
-                 bg-red-600 text-white rounded-lg 
-                 hover:bg-red-500 active:bg-red-700
-                 transition-colors flex items-center justify-center 
-                 space-x-2 text-sm sm:text-base font-medium"
+                            className="group w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 
+      bg-transparent text-neutral-600 rounded-sm border border-neutral-500 hover:text-white
+      hover:bg-gradient-to-tl  hover:to-red-600 hover:border-none
+     
+      transition-all duration-400 flex items-center justify-center
+      space-x-2 text-sm sm:text-base font-medium gap-3"
                         >
-                            Delete my account
+                            <Skull
+                                className="w-5 h-5 transform rotate-180 transition-transform duration-600 group-hover:rotate-0"
+                            />
+                            <span>Delete my account</span>
                         </button>
                     </div>
+
+
                 </section>
 
 
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

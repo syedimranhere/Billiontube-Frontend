@@ -156,29 +156,35 @@ const VideoManagement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black flex flex-col pt-14 sm:pt-16">
+    <div className=" bg-black flex flex-col pt-14 sm:pt-16">
 
-      {/* Delete Confirmation Modal */}
+
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-4 sm:p-6 max-w-sm w-full">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          {/* BACKGROUND OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-b  backdrop-blur-sm"></div>
+
+          {/* CARD */}
+          <div className="relative bg-black border-2 border-neutral-700 rounded-sm p-4 max-w-sm w-full shadow-md z-10">
             <div className="flex items-center gap-2 mb-3">
               <AlertTriangle className="w-5 h-5 text-red-400" />
-              <h3 className="text -lg font-semibold text-white">Delete Video</h3>
+              <h3 className="text-lg font-semibold text-white">Delete Video</h3>
             </div>
-            <p className="text-gray-200 mb-4 text-sm">
+
+            <p className="text-gray-300 mb-4 text-sm">
               Are you sure you want to delete this video? This action cannot be undone.
             </p>
+
             <div className="flex gap-2">
               <button
                 onClick={() => handleDelete(deleteConfirm)}
-                className="flex-1 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium"
+                className="flex-1 px-3 py-2 bg-red-700 hover:border text-white rounded-xs text-sm transition-colors font-medium"
               >
                 Delete
               </button>
               <button
                 onClick={() => setDeleteConfirm(null)}
-                className="flex-1 px-3 py-2 bg-neutral-600 hover:bg-neutral-700 text-white rounded-md text-sm"
+                className="flex-1 px-3 py-2 bg-neutral-600 hover:bg-neutral-800 transition-colors   text-white rounded-xs text-sm"
               >
                 Cancel
               </button>
@@ -187,7 +193,8 @@ const VideoManagement = () => {
         </div>
       )}
 
-      {/* Edit Modal */}
+
+      {/* editing */}
       {editingVideo && (
         <EditModal
           editForm={editForm}
@@ -202,10 +209,10 @@ const VideoManagement = () => {
       )}
       {/* Header Section */}
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 lg:px-8 mt-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 lg:px-8  mt-4 mb-6">
         <div className="flex items-center gap-2">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white m-0">
-            My Videos / Uploads
+            My Videos
           </h1>
         </div>
         <p className="text-gray-400 text-sm sm:text-base mt-1 sm:mt-0">

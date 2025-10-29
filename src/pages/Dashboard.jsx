@@ -57,10 +57,10 @@ const Dashboard = () => {
                     </div>
 
                     {/* User Info */}
-                    <div className="bg-neutral-900 rounded-lg p-6 border border-neutral-800">
+                    <div className=" rounded-lg p-6  bg-gradient-to-l from-indigo-950">
                         <div className="flex items-center space-x-6">
                             {/* Avatar */}
-                            <div className="w-20 h-20 rounded-full overflow-hidden bg-neutral-800 flex items-center justify-center">
+                            <div className="w-20 h-20 rounded-sm overflow-hidden bg-neutral-800 flex items-center justify-center">
                                 {stats.avatar ? (
                                     <img
                                         src={stats.avatar}
@@ -69,7 +69,7 @@ const Dashboard = () => {
                                         onError={(e) => { e.target.style.display = "none"; }} // fallback if broken
                                     />
                                 ) : (
-                                    <span className="text-2xl font-medium text-neutral-300">
+                                    <span className="text-2xl font-medium text-neutral-100">
                                         {stats.fullname?.charAt(0) || "U"}
                                     </span>
                                 )}
@@ -80,7 +80,7 @@ const Dashboard = () => {
                                 <h2 className="text-2xl font-semibold text-white">
                                     {stats.fullname}
                                 </h2>
-                                <p className="text-neutral-400 text-lg">{stats.username}</p>
+                                <p className="text-neutral-200 text-lg">{stats.username}</p>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Secondary Stats Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
                     <StatCard
                         icon={Video}
                         title="Videos"

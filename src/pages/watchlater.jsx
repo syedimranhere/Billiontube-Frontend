@@ -60,15 +60,14 @@ export const WatchLaterPage = () => {
     if (loading) {
         return (
             <SmoothSkeletonLoader />
-
         );
     }
 
     return (
         <div className="min-h-screen bg-black pt-14 sm:pt-16">
             {removeConfirm && (
-                <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-                    <div className="bg-neutral-900 border border-gray-400 rounded-xl p-4 sm:p-6 max-w-md w-full">
+                <div className="fixed inset-0 bg-black/80 backdrop-blur-xs flex items-center justify-center z-10 p-4">
+                    <div className="bg-black/90 border border-neutral-800 rounded-sm p-4 sm:p-6 max-w-md w-full">
                         <div className="flex items-center space-x-3 mb-4">
                             <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0" />
                             <h3 className="text-lg font-semibold text-white">Remove from Watch Later</h3>
@@ -79,13 +78,13 @@ export const WatchLaterPage = () => {
                         <div className="flex flex-col sm:flex-row gap-3">
                             <button
                                 onClick={() => handleRemoveFromWatchLater(removeConfirm)}
-                                className="flex-1 px-4 py-2 bg-red-400 hover:bg-red-700 text-white rounded-lg transition-colors font-medium text-sm"
+                                className="flex-1 px-4 py-2 bg-red-900 hover:border text-white rounded-sm transition-colors font-medium text-sm"
                             >
                                 Remove Video
                             </button>
                             <button
                                 onClick={() => setRemoveConfirm(null)}
-                                className="flex-1 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 text-white rounded-lg transition-colors text-sm"
+                                className="flex-1 px-4 py-2 bg-neutral-600 hover:bg-neutral-800 text-white rounded-sm transition-colors text-sm"
                             >
                                 Cancel
                             </button>
@@ -108,15 +107,15 @@ export const WatchLaterPage = () => {
 
                 {/* Empty State */}
                 {videos.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center flex-1 text-center px-4 py-12">
+                    <div className="flex flex-col smooch-sans items-center justify-center flex-1 text-center px-4 py-12">
                         <Clock className="w-12 h-12 text-gray-600 mb-4" />
-                        <h2 className="text-xl font-semibold text-white mb-3">No videos in Watch Later</h2>
+                        <h2 className=" font-semibold text-white mb-3">No videos in Watch Later</h2>
                         <p className="text-gray-400 mb-6 max-w-md">
                             Save videos to watch them later. Your saved videos will appear here.
                         </p>
                         <button
-                            onClick={() => window.history.back()}
-                            className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm"
+                            onClick={() => navigate("/")}
+                            className="px-4 py-2 bg-indigo-700 text-white rounded-sm hover:bg-indigo-500 transition-colors font-medium text-sm"
                         >
                             Browse Videos
                         </button>

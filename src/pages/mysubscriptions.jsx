@@ -45,26 +45,24 @@ const Mysubscriptions = () => {
     return (
         <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
             {/* Header */}
-            <div className="px-2 sm:px-3 md:px-4 py-3 sm:py-4 border-b border-neutral-800">
+            <div className="px-2 sm:px-3 md:px-4 py-3 sm:py-4">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <Users className="text-blue-400 w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                         <h1 className="text-lg sm:text-xl md:text-2xl font-bold">My Subscriptions</h1>
                     </div>
                     <span className="text-gray-400 text-sm">
-                        {subscriptions.length} channel{subscriptions.length !== 1 ? 's' : ''}
+                        {subscriptions.length} channel{subscriptions.length !== 1 ? "s" : ""}
                     </span>
                 </div>
             </div>
 
             {/* Main Content */}
-            <div className="px-2 sm:px-3 md:px-4 py-3 sm:py-4">
+            <div className="px-2 sm:px-3  md:px-4 py-3 sm:py-4">
                 {subscriptions.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center text-center px-4 py-12">
+                    <div className="flex flex-col items-center smooch-sans justify-center text-center px-4 py-12">
                         <Users className="w-12 h-12 text-gray-600 mb-4" />
-                        <h2 className="text-xl font-semibold text-white mb-2">
-                            No Subscriptions
-                        </h2>
+                        <h2 className="text-xl font-semibold text-white mb-2">No Subscriptions</h2>
                         <p className="text-gray-400 text-sm">
                             You haven't subscribed to any channels yet.
                         </p>
@@ -74,7 +72,7 @@ const Mysubscriptions = () => {
                         {subscriptions.map((subscription, index) => (
                             <div
                                 key={subscription.channel?._id || index}
-                                className="bg-neutral-900 rounded-lg p-4 border border-neutral-800 hover:border-neutral-700"
+                                className="group relative bg-neutral-900 rounded-sm p-4 border border-neutral-900 transition-all duration-300 hover:bg-indigo-800/15"
                             >
                                 <div className="flex items-center justify-between gap-4">
                                     {/* Channel Info */}
@@ -100,8 +98,11 @@ const Mysubscriptions = () => {
                                                 </span>
                                                 <div className="flex items-center gap-3">
                                                     <span>
-                                                        Joined: {subscription.channel?.createdAt
-                                                            ? new Date(subscription.channel.createdAt).toLocaleDateString()
+                                                        Joined:{" "}
+                                                        {subscription.channel?.createdAt
+                                                            ? new Date(
+                                                                subscription.channel.createdAt
+                                                            ).toLocaleDateString()
                                                             : "Unknown"}
                                                     </span>
                                                     <span>•</span>
@@ -121,7 +122,7 @@ const Mysubscriptions = () => {
                                                 subscription.channel?.fullname
                                             )
                                         }
-                                        className="flex items-center gap-2 px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 hover:text-red-300 rounded-lg text-sm flex-shrink-0"
+                                        className="relative z-10 flex items-center gap-2 px-3 py-2 bg-red-500/20 hover:border-red-500 hover:bg-red-500/40 hover:text-white rounded-sm text-sm flex-shrink-0 transition-all duration-300"
                                         aria-label="Unsubscribe from channel"
                                     >
                                         <X className="w-4 h-4" />
@@ -134,6 +135,8 @@ const Mysubscriptions = () => {
                 )}
             </div>
         </div>
+
+
     );
 };
 

@@ -21,7 +21,7 @@ export const NotificationProvider = ({ children }) => {
         // Auto remove after 3 seconds
         setTimeout(() => {
             setNotifications(prev => prev.filter(notif => notif.id !== id));
-        }, 900);
+        }, 2000);
     };
 
     const removeNotification = (id) => {
@@ -67,24 +67,24 @@ const NotificationItem = ({ notification, onRemove }) => {
 
     useEffect(() => {
         // Trigger entrance animation
-        setTimeout(() => setIsVisible(true), 10);
+        setTimeout(() => setIsVisible(true), 30);
     }, []);
 
     const handleRemove = () => {
         setIsVisible(false);
-        setTimeout(onRemove, 300); // Wait for exit animation
+        setTimeout(onRemove, 1000); // Wait for exit animation
     };
 
     return (
         <div
-            className={`transform transition-all duration-400 ease-in-out ${isVisible
-                    ? "translate-x-0 opacity-100 scale-100"
-                    : "translate-x-full opacity-0 scale-95"
+            className={`transform transition-all duration-600 ease-in-out ${isVisible
+                ? "translate-x-0 opacity-100 scale-100"
+                : "translate-x-full opacity-0 scale-95"
                 }`}
         >
             <div
                 className={`
-        px-3 py-2 sm:px-5 sm:py-4 rounded-lg shadow-lg border-l-4 
+        px-3 py-2 sm:px-5 sm:py-4 rounded-sm shadow-lg border-l-4 
         w-full max-w-[90%] sm:max-w-md
         ${notification.success
                         ? "bg-neutral-950 text-neutral-200 border-green-400"
@@ -96,7 +96,7 @@ const NotificationItem = ({ notification, onRemove }) => {
                     {/* Left Section */}
                     <div className="flex items-start flex-1 min-w-0">
                         <div
-                            className={`w-2 h-2 rounded-full mt-1 mr-2 sm:mr-3 flex-shrink-0 ${notification.success ? "bg-green-400" : "bg-red-500"
+                            className={`w-2 h-2 rounded-sm mt-1 mr-2 sm:mr-3 flex-shrink-0 ${notification.success ? "bg-green-400" : "bg-red-500"
                                 }`}
                         ></div>
                         <p className="text-sm sm:text-base font-medium leading-relaxed break-words">
@@ -108,7 +108,7 @@ const NotificationItem = ({ notification, onRemove }) => {
                     <button
                         onClick={handleRemove}
                         className="flex-shrink-0 text-gray-400 hover:text-gray-200 transition-colors 
-                     p-1 rounded touch-manipulation active:scale-90"
+                     p-1 rounded-sm touch-manipulation active:scale-90"
                         aria-label="Close notification"
                     >
                         <svg

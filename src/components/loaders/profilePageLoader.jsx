@@ -12,8 +12,8 @@ const VideoPageLoader = () => {
                         {/* Avatar */}
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-neutral-800 overflow-hidden flex-shrink-0 shimmer-container"></div>
 
-                        {/* Profile Info */}
-                        <div className="flex flex-col gap-1">
+
+                        <div className="flex flex-col gap-1 w-full">
                             {/* Name */}
                             <div className="w-32 h-5 bg-neutral-800 rounded shimmer-container"></div>
 

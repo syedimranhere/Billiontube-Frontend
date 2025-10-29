@@ -103,7 +103,7 @@ const VideoPage = memo(() => {
                                 onClick={togglePlay}
                                 aria-label="Play"
                             >
-                                <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-200 shadow-lg">
+                                <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-700 transition-colors duration-200 shadow-lg">
                                     <svg
                                         className="w-8 h-8 text-white ml-1"
                                         fill="currentColor"
@@ -126,12 +126,12 @@ const VideoPage = memo(() => {
                                     onClick={handleSeek}
                                 >
                                     <div
-                                        className="h-full bg-blue-600 rounded-full relative"
+                                        className="h-full bg-indigo-600 rounded-full relative"
                                         style={{
                                             width: `${duration ? (currentTime / duration) * 100 : 0}%`,
                                         }}
                                     >
-                                        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3.5 h-3.5 rounded-full bg-blue-600 opacity-0 group-hover/progress:opacity-100 transition-opacity" />
+                                        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3.5 h-3.5 rounded-full bg-indigo-600 opacity-0 group-hover/progress:opacity-100 transition-opacity" />
                                     </div>
                                 </div>
                             </div>
@@ -253,13 +253,13 @@ const VideoPage = memo(() => {
                         {/* Video info loading overlay - only show when video info is loading */}
                         {loading && (
                             <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
                             </div>
                         )}
                     </div>
 
                     {/* Video Info */}
-                    {/* Video Info */}
+
                     <section className="mt-6">
                         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-snug">
                             {videoData.title}
@@ -273,7 +273,7 @@ const VideoPage = memo(() => {
                         </div>
 
                         {/* Channel + Actions */}
-                        <div className="mt-6 p-5 rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900/80 to-neutral-950/70 shadow-lg">
+                        <div className="mt-6 p-5 rounded-xl border border-neutral-300 bg-gradient-to-br  via-gray-900 to-indigo-950/70 shadow-lg">
                             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
 
                                 {/* Channel */}
@@ -282,7 +282,7 @@ const VideoPage = memo(() => {
                                         to={`/user-profile/${videoData.owner._id}`}
                                         className="flex items-center gap-4 text-white group"
                                     >
-                                        <span className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-neutral-800 group-hover:ring-blue-600 transition">
+                                        <span className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-neutral-800 group-hover:ring-indigo-600 transition">
                                             <img
                                                 src={videoData.owner.avatar}
                                                 alt="avatar"
@@ -302,8 +302,8 @@ const VideoPage = memo(() => {
                                     <button
                                         className={`px-6 py-2.5 rounded-full font-medium transition-all shadow-md
             ${isSubscribed
-                                                ? "bg-neutral-800 hover:bg-neutral-700 text-white border border-neutral-700"
-                                                : "bg-blue-600 hover:bg-blue-700 text-white hover:shadow-blue-500/25"
+                                                ? "bg-indigo-900 hover:bg-indigo-400 text-white border border-red-700"
+                                                : "bg-indigo-400 hover:bg-indigo-800 text-white hover:shadow-purple-500/25"
                                             }`}
                                         onClick={() => {
                                             !Authenticated
@@ -315,7 +315,7 @@ const VideoPage = memo(() => {
                                     </button>
 
                                     {/* Like/Dislike */}
-                                    <div className="flex items-center bg-neutral-900 rounded-full border border-neutral-800 px-2 py-1.5 gap-1.5 shadow-inner">
+                                    <div className="flex items-center bg-indigo-700 rounded-full  px-2 py-1.5 gap-1.5 shadow-inner">
                                         {/* Like */}
                                         <button
                                             onClick={toggleLike}
@@ -323,7 +323,7 @@ const VideoPage = memo(() => {
                                             className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition
               ${!Authenticated ? "opacity-50 cursor-not-allowed"
                                                     : "hover:bg-neutral-800"}
-              ${liked ? "text-blue-400 bg-neutral-800" : ""}`}
+              ${liked ? "text-indigo-700 bg-neutral-900" : ""}`}
                                         >
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -351,7 +351,7 @@ const VideoPage = memo(() => {
                                             className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition
               ${!Authenticated ? "opacity-50 cursor-not-allowed"
                                                     : "hover:bg-neutral-800"}
-              ${disliked ? "text-blue-400 bg-neutral-800" : ""}`}
+              ${disliked ? "text-indigo-700 bg-neutral-900" : ""}`}
                                         >
                                             <svg
                                                 className="w-5 h-5 rotate-180"
@@ -375,7 +375,7 @@ const VideoPage = memo(() => {
                             {/* Description */}
                             {videoData.description && (
                                 <div className="mt-8">
-                                    <div className="p-6 rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 shadow-lg hover:shadow-xl hover:border-neutral-700 transition">
+                                    <div className="p-6 rounded-xl border  bg-gradient-to-br hover:to-purple-900/10   transition duration-500">
                                         <h2 className="text-lg font-semibold text-white mb-3">
                                             Description
                                         </h2>
@@ -423,7 +423,7 @@ const VideoPage = memo(() => {
             {/* Custom Styles */}
             <style>{`
                 .volume-slider {
-                    accent-color: #2563eb; /* Tailwind blue-900 */
+                    accent-color: #2563eb; /* Tailwind indigo-900 */
                 }
                 .volume-slider::-webkit-slider-thumb,
                 .volume-slider::-moz-range-thumb {

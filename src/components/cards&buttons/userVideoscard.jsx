@@ -3,11 +3,12 @@ import {
     Edit3,
     Trash2,
 } from "lucide-react"
+import { formatViews } from "../../utils/timeago";
 export const VideoCard2 = ({ video, onEditStart, onDeleteClick }) => {
     return (
-        <div className="bg-neutral-950 rounded-lg border border-neutral-900 overflow-hidden hover:border-neutral-600 transition-all duration-300 w-full shadow-sm">
+        <div className="bg-neutral-950 rounded-sm border border-neutral-900 overflow-hidden hover:border-neutral-800 transition-all duration-300 w-full shadow-sm">
             {/* Thumbnail */}
-            <div className="relative w-full">
+            <div className="relative w-full hover:opacity-50 ">
                 <Link to={`/video/${video._id}`}>
                     <div className="aspect-video w-full bg-neutral-900 overflow-hidden">
                         <img
@@ -19,51 +20,63 @@ export const VideoCard2 = ({ video, onEditStart, onDeleteClick }) => {
                 </Link>
 
                 {/* Duration */}
-                <div className="absolute bottom-1 right-1 bg-black/80 text-white text-[11px] px-2 py-0.5 rounded">
+                <div className="absolute top-1 left-1 bg-black/80 text-white text-[11px] px-2 py-0.5 rounded-xs">
                     {video.duration}
                 </div>
 
-                {/* Visibility Label */}
-                <div
-                    className={`absolute top-1 left-1 text-[11px] px-2 py-0.5 rounded font-medium ${video.visibility === "public"
-                        ? "bg-green-700/80 text-white"
-                        : "bg-yellow-600/80 text-black"
-                        }`}
-                >
-                    {video.visibility === "public" ? "Public" : "Private"}
+                <div className="absolute bottom-0 left-0 w-full flex items-center justify-between p-2 ">
+                    {/* Edit and delete icons */}
+
+
+                    <div
+                        className={`text-[11px] px-2 py-0.5 rounded-xs font-medium ${video.visibility === "public"
+                            ? "bg-green-800/80 text-white"
+                            : "bg-yellow-700/80 text-black"
+                            }`}
+                    >
+                        {video.visibility === "public" ? "Public" : "Private"}
+                    </div>
                 </div>
             </div>
 
             {/* Content */}
-            <div className="p-3 sm:p-4">
-                <h3 className="text-sm font-semibold text-white mb-1 line-clamp-2">
-                    {video.title}
-                </h3>
+            <div className="p-3 sm:p-4 ">
+                <Link to={`/video/${video._id}`}>
+
+                    <h3 className="text-sm font-semibold hover:underline text-white mb-1 line-clamp-2">
+                        {video.title}
+                    </h3>
+                </Link>
                 <p className="text-gray-400 text-xs mb-2 line-clamp-3">
                     {video.description}
                 </p>
-                <div className="text-[11px] text-gray-500 mb-3">
-                    <span>{video.views} views</span>
-                    <span className="mx-1">•</span>
-                    <span>{new Date(video.uploadDate).toLocaleDateString()}</span>
+                <div className="flex items-center justify-between text-[11px] text-gray-500">
+                    {/* Left Side: Views + Date */}
+                    <div className="flex items-center">
+                        <span>{formatViews(video.views)} views</span>
+                        <span className="mx-1">•</span>
+                        <span>{new Date(video.uploadDate).toLocaleDateString()}</span>
+                    </div>
+
+                    {/* Right Side: Edit/Delete Icons */}
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => onEditStart(video)}
+                            className=" mt-2 hover:text-blue-800/80 text-white  transition"
+                        >
+                            <Edit3 className="w-4 h-4" />
+                        </button>
+                        <button
+                            onClick={() => onDeleteClick(video._id)}
+                            className=" mt-2 hover:text-red-800 text-red-300  transition"
+                        >
+                            <Trash2 className="w-4 h-4" />
+                        </button>
+                    </div>
                 </div>
-                <div className="flex gap-2">
-                    <button
-                        onClick={() => onEditStart(video)}
-                        className="flex items-center gap-1 px-2.5 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-white rounded-md text-xs font-medium transition-colors"
-                    >
-                        <Edit3 className="w-3.5 h-3.5" />
-                        Edit
-                    </button>
-                    <button
-                        onClick={() => onDeleteClick(video._id)}
-                        className="flex items-center gap-1 px-2.5 py-1.5 bg-red-900/40 hover:bg-red-900/70 text-red-300 rounded-md text-xs font-medium transition-colors"
-                    >
-                        <Trash2 className="w-3.5 h-3.5" />
-                        Delete
-                    </button>
-                </div>
+
             </div>
         </div>
     );
+
 };

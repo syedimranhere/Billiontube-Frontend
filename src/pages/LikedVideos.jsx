@@ -41,10 +41,7 @@ const LikedVideos = () => {
                             <span>{videos.length} video{videos.length !== 1 ? 's' : ''}</span>
                         </div>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-2 bg-neutral-900 rounded-lg border border-neutral-800 text-sm">
-                        <Flame className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                        <span className="text-gray-300">Your Collection</span>
-                    </div>
+
                 </div>
 
                 {/* Videos Grid */}

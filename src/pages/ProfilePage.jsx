@@ -59,7 +59,7 @@ const ProfilePage = () => {
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
                         {/* Left: Avatar + Name */}
-                        <div className="flex items-center gap-4 sm:gap-6">
+                        <div className="flex items-center smooch-sans gap-4 sm:gap-6">
                             {/* Avatar */}
                             <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-neutral-200 border-4 border-neutral-700 overflow-hidden shadow-lg">
                                 {userData?.avatar ? (
@@ -115,7 +115,7 @@ const ProfilePage = () => {
 
                         {/* Right: Stats */}
                         <div className="flex gap-4">
-                            <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
+                            <div className="flex flex-col items-center px-3 py-2 rounded-xs bg-neutral-900 border border-neutral-800">
                                 <span className="text-sm text-neutral-400 flex items-center gap-1">
                                     <Play className="w-4 h-4 text-blue-400" /> Videos
                                 </span>
@@ -123,7 +123,7 @@ const ProfilePage = () => {
                                     {userVideos?.length ?? 0}
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
+                            <div className="flex flex-col items-center px-3 py-2 rounded-xs bg-neutral-900 border border-neutral-800">
                                 <span className="text-sm text-neutral-400 flex items-center gap-1">
                                     <Eye className="w-4 h-4 text-yellow-500" /> Views
                                 </span>

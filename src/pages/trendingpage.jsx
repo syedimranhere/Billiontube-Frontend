@@ -36,7 +36,7 @@ export default function TrendingPage() {
                 <div className="container mx-auto px-6 py-8">
                     <div className="flex items-center space-x-3 mb-8">
                         <TrendingUp className="w-8 h-8 text-red-500" />
-                        <h1 className="text-3xl font-bold">Trending Videos</h1>
+                        <p className=" ">Trending Videos</p>
                     </div>
 
                     <div className="text-center py-20">

@@ -13,12 +13,12 @@ const HeaderLoader = () => {
       <div className="flex-1 max-w-2xl mx-8">
         <div className="flex items-center">
           {/* Search input skeleton */}
-          <div className="flex-1 h-10 bg-neutral-900 border border-neutral-800 rounded-l-full animate-pulse">
-            <div className="h-full w-full rounded-l-full animate-shimmer"></div>
+          <div className="flex-1 h-10 bg-neutral-900 border border-neutral-800 rounded-sm animate-pulse">
+            <div className="h-full w-full rounded-sm animate-shimmer"></div>
           </div>
 
           {/* Search button skeleton */}
-          <div className="w-16 h-10 bg-neutral-800 border border-neutral-700 rounded-r-full animate-pulse flex items-center justify-center">
+          <div className="w-16 h-10 bg-neutral-800 border border-neutral-700 rounded-sm animate-pulse flex items-center justify-center">
             <div className="w-4 h-4 bg-neutral-700 rounded animate-pulse"></div>
           </div>
         </div>
@@ -27,13 +27,13 @@ const HeaderLoader = () => {
       {/* Right section - User profile */}
       <div className="flex items-center space-x-4">
         {/* Notification icon skeleton */}
-        <div className="w-6 h-6 bg-neutral-800 rounded animate-pulse"></div>
+        <div className="w-6 h-6 bg-neutral-800 rounded "></div>
 
         {/* Upload icon skeleton */}
-        <div className="w-6 h-6 bg-neutral-800 rounded animate-pulse"></div>
+        <div className="w-6 h-6 bg-neutral-800 rounded "></div>
 
         {/* Profile avatar skeleton */}
-        <div className="w-8 h-8 bg-neutral-800 rounded-full animate-pulse"></div>
+        <div className="w-8 h-8 bg-neutral-800 rounded-full "></div>
       </div>
 
       {/* Custom CSS for shimmer effect */}
