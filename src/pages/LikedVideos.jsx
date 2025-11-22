@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import VideoCard from "../components/cards&buttons/videoCard";
-import { Heart, Play, Flame } from 'lucide-react';
+import { Heart, Play } from 'lucide-react';
 import SmoothSkeletonLoader from '../components/loaders/videoskeleton';
 import { videosAPI } from '../services/videosservice';
 const LikedVideos = () => {

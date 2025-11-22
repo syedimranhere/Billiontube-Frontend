@@ -36,7 +36,7 @@ const Home = () => {
         <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
 
             <div className="px-2 sm:px-3 md:px-4 py-3 sm:py-4">
-                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-5 gap-3 sm:gap-4">
                     {Videos.map((vid) => (
                         <VideoCard key={vid._id}
                             videoId={vid._id}

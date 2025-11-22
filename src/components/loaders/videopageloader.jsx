@@ -1,7 +1,7 @@
 
 const VideoPageLoader = () => {
     return (
-        <div className="min-h-screen bg-neutral-950 text-white pt-14 sm:pt-16">
+        <div className="min-h-screen bg-black text-white pt-14 sm:pt-16">
             <div className="mx-auto max-w-[1750px] px-4 sm:px-6 lg:px-8 py-4 grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_402px] gap-6">
                 {/* Main */}
                 <div>
@@ -24,9 +24,8 @@ const VideoPageLoader = () => {
                     </div>
                 </div>
 
-                {/* Up next */}
                 <aside className="space-y-4">
-                    <div className="h-6 w-24 bg-neutral-900 rounded animate-pulse" />
+
                     {[...Array(6)].map((_, i) => (
                         <div
                             key={i}

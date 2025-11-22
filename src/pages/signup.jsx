@@ -42,8 +42,7 @@ export default function SignupPage() {
             alt="BillionTube logo"
             className="w-8 h-8 sm:w-10 sm:h-10"
           />
-
-          {/* Brand Name */}
+          {/* change btube logo to extreme left */}
           <h1 className="michroma-regular text-xl sm:text-2xl md:text-3xl font-bold  text-white tracking-tight hover:text-gray-200 transition-colors">
             BillionTube
           </h1>

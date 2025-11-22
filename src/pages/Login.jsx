@@ -38,7 +38,7 @@ export default function LoginPage() {
                         className="w-8 h-8 sm:w-10 sm:h-10"
                     />
 
-                    {/* Brand Name */}
+
                     <h1 className="michroma-regular text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight hover:text-gray-200 transition-colors">
                         BillionTube
                     </h1>
@@ -51,7 +51,7 @@ export default function LoginPage() {
             <main className="relative z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 pt-16 sm:pt-20">
                 <div className="w-full max-w-md sm:max-w-lg">
                     {/* Compact Login Card */}
-                    <div className="bg-neutral-900/95 backdrop-blur-3xl opacity-85 border border-neutral-800/80 rounded-md p-6 sm:p-8 shadow-3xl relative">
+                    <div className="bg-neutral-900 backdrop-blur-3xl opacity-85 border border-neutral-800/80 rounded-md p-6 sm:p-8 shadow-3xl relative">
                         {/* Subtle gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-transparent rounded-xl sm:rounded-2xl pointer-events-none"></div>
 

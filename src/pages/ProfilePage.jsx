@@ -58,7 +58,7 @@ const ProfilePage = () => {
                 <section className="mb-6 border-b border-neutral-800 pb-6">
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                        {/* Left: Avatar + Name */}
+
                         <div className="flex items-center smooch-sans gap-4 sm:gap-6">
                             {/* Avatar */}
                             <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-neutral-200 border-4 border-neutral-700 overflow-hidden shadow-lg">
@@ -73,7 +73,7 @@ const ProfilePage = () => {
                                 )}
                             </div>
 
-                            {/* Name + Meta */}
+
                             <div>
                                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
                                     {userData?.fullname || "Unnamed"}

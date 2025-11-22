@@ -147,16 +147,13 @@ const Header = () => {
                     <div className="flex items-center">
                         <div className="w-10 h-10 flex-shrink-0"></div>
 
-                        {/* Text + Logo inline */}
+
                         <a
                             href="/"
                             className={`flex items-center text-white hover:text-gray-200 transition-colors ml-1 sm:ml-1 ${showMobileSearch ? 'hidden' : 'flex'} lg:flex`}
                         >
-                            {/* Text (hidden on mobile, visible sm+) */}
-                            <span className="michroma-regular hidden sm:inline font-bold text-base sm:text-lg lg:text-xl xl:text-2xl tracking-tight truncate">
-                                BillionTube
-                            </span>
-
+                            {/* adding Biliontube text logo */}
+                            <span className="michroma-regular hidden sm:inline font-bold text-base sm:text-lg lg:text-xl xl:text-2xl tracking-tight truncate">BillionTube</span>
                             {/* Logo (always visible) */}
                             <img
                                 src="/file.svg"

@@ -35,10 +35,10 @@ export default function AuthRequiredPage() {
 
             {/* Header */}
             <div className="absolute top-0 left-0 right-0 z-60 p-4 sm:p-6">
-                <div className="flex justify-between items-center max-w-7xl mx-auto">
+                <div className="flex justify-between items-center max-w-7xl ">
                     <h1
                         onClick={() => navigate("/")}
-                        className="cursor-pointer text-2xl sm:text-3xl font-bold text-white tracking-tight"
+                        className="michroma-regular text-2xl sm:text-3xl font-bold text-white tracking-tight"
                     >
                         BillionTube
                     </h1>
