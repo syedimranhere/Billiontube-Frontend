@@ -126,7 +126,7 @@ export default function CommentsSection({ videoId }) {
                     </div>
                 </div>
             ) : (
-                <div className="flex items-center justify-center gap-2 py-6 px-4 rounded-lg bg-neutral-900/60 border border-neutral-700">
+                <div className="flex items-center justify-center gap-2 py-10 px-4 rounded-lg bg-neutral-900/60 border border-neutral-700">
                     <Lock className="w-5 h-5 text-gray-400" />
                     <span className="text-gray-400 text-sm">
                         <Link

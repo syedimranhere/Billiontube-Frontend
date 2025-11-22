@@ -13,7 +13,7 @@ export default function Pricing() {
                 "Boosted reach",
                 "Advanced analytics",
             ],
-            buttonStyle: "bg-gradient-to-r  hover:to-neutral-400 via-gray-600 transition-colors durationn-400 from-neutral-400 text-black hover:text-white transition-all duration-400  "
+            buttonStyle: "bg-gradient-to-r  hover:to-neutral-400 via-gray-600 transition-colors durationn-400 from-neutral-400 text-black hover:text-white hover:bg-gradient-to-r hover:to-neutral-400 hover:via-gray-600 transition-colors durationn-400 from-neutral-400 text-black hover:text-white transition-all duration-400  "
 
         },
         {
@@ -28,22 +28,22 @@ export default function Pricing() {
                 "Boosted reach",
                 "Advanced analytics",
             ],
-            buttonStyle: "bg-gradient-to-r  hover:to-neutral-400 via-gray-600 transition-colors durationn-400 from-neutral-400 text-black hover:text-white transition-all duration-400  "
+            buttonStyle: "bg-gradient-to-r   hover:to-neutral-400 via-gray-600 transition-colors durationn-400 from-neutral-400 text-black hover:text-white transition-all duration-400  "
         },
     ];
 
     return (
-        <div className="min-h-screen smooch-sans w-full relative mt-15 bg-black">
+        <div className="min-h-screen smooch-sans w-full   bg-black">
 
             <div
                 className="absolute inset-0 z-0"
                 style={{
-                    background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139, 92, 246, 0.25), transparent 70%), #000000",
+                    background: "radial-gradient(ellipse 90% 50% at 60% 10%, rgba(19, 99, 296, 0.25), transparent 90%), #000000",
                 }}
             />
-            <div className="min-h-screen  flex flex-col z-20 mb-10  items-center justify-center bg-black   ">
+            <div className="min-h-screen  flex flex-col z-20    items-center justify-center bg-black   ">
                 {/* Header */}
-                <h1 className="text-4xl instrument-serif-regular  italic text-white itext-center z-10 mb-3">
+                <h1 className="text-4xl instrument-serif-regular  italic text-white itext-center z-10 mb-1">
                     Choose Your Plan
                 </h1>
                 <p className="text-gray-200 text-lg instrument-serif-regular mb-7 text-center z-10 ">
@@ -52,16 +52,16 @@ export default function Pricing() {
 
                 {/* Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-9 max-w-4xl w-full">
-                    {/* insteal of writing cards two time we use map  */}
+                    {/* instead of writing cards two time we use map  */}
                     {plans.map((plan, i) => (
                         <div
                             key={i}
 
                             className="relative flex flex-col justify-between 
-bg-gradient-to-bl from-gray-900 via-gray-950 to-black 
-border border-neutral-800 rounded-2xl 
+bg-gradient-to-bl from-gray-900 via-gray-950 to-gray-900 
+border border-neutral-950 rounded-2xl 
 shadow-lg shadow-gray-700/20 
-hover:shadow-gray-500/z20 hover:border-indigo-900/50 
+hover:shadow-gray-500/z20 hover:border-indigo-900/50 hover:bg-gradient-to-bl hover:scale-103
 transition-all duration-600 p-8"
 
 

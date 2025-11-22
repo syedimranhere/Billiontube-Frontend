@@ -373,7 +373,6 @@ const VideoPage = () => {
                             {videoData.title}
                         </h1>
 
-                        {/* Views + Date + Channel */}
                         <div className="mt-4 flex flex-wrap items-center justify-between text-neutral-300">
                             <div className="flex items-center gap-3 text-sm sm:text-base">
                                 <span className="text-xl font-bold text-white">{formatViews(videoData.views)}</span>
