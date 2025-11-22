@@ -41,30 +41,26 @@ const VideoPage = () => {
 
                 const channelOwnerId = response.video.owner._id;
                 setOwnerId(channelOwnerId);
-                Setlikes(response.video.likes);
-                const exists = await videosAPI.getSubscriptionStatus(channelOwnerId);
-                setIsSubscribed(exists.success);
-                const likeData = await videosAPI.getLikedStatus(videoId);
-                setLiked(likeData.status === "liked");
-                setDisliked(likeData.status === "disliked");
 
-                const subscribers = await videosAPI.getChannelsSubscribers(
-                    channelOwnerId
-                );
-                setSubs(subscribers.Number_Of_Subscribers);
                 getSuggestedVideos()
                 if (Authenticated) {
                     try {
-                        await fetchSubscriptionData(channelOwnerId);
+
+                        Setlikes(response.video.likes);
+                        const exists = await videosAPI.getSubscriptionStatus(channelOwnerId);
+                        setIsSubscribed(exists.success);
+                        const likeData = await videosAPI.getLikedStatus(videoId);
+                        setLiked(likeData.status === "liked");
+                        setDisliked(likeData.status === "disliked");
+
+                        const subscribers = await videosAPI.getChannelsSubscribers(
+                            channelOwnerId
+                        );
+                        setSubs(subscribers.Number_Of_Subscribers);
                     } catch (err) {
                         console.error("Subscription fetch failed:", err);
                     }
 
-                    try {
-                        await fetchLikeStatus(videoId);
-                    } catch (err) {
-                        console.error(" Like status fetch failed:", err);
-                    }
 
                     addToWatchHistory(videoId).catch(console.error);
                 }

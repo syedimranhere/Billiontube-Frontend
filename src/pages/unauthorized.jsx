@@ -58,7 +58,7 @@ export default function AuthRequiredPage() {
             <div className="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 pt-16 pb-8 sm:pt-20 sm:pb-12 relative z-10">
                 <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
                     <div className="bg-neutral-900/95 backdrop-blur-xl border border-neutral-800/80 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-2xl relative">
-                        <div className="absolute inset-0 bg-gradient-to-b from-red-900/10 via-transparent to-transparent rounded-2xl pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-black  rounded-2xl pointer-events-none"></div>
 
                         <div className="relative z-10 text-center space-y-6 sm:space-y-8">
                             {/* Lock Icon */}
